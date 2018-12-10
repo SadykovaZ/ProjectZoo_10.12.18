@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Organization">
+      <UniqueIdentifier>{d99a1418-570b-435d-ac6d-2e3ac7ab2fd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Zoo">
+      <UniqueIdentifier>{a32edcb4-cdb9-4c07-9e8a-537f70dd05c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Zoo_cpp">
+      <UniqueIdentifier>{c3b78fc4-80ca-47cb-bf5b-0ce6018f20c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Organization_cpp">
+      <UniqueIdentifier>{8935d644-de63-45d6-9dd2-62d92c5f337a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="org\Director.h">
+      <Filter>Header Files\Organization</Filter>
+    </ClInclude>
+    <ClInclude Include="org\Employee.h">
+      <Filter>Header Files\Organization</Filter>
+    </ClInclude>
+    <ClInclude Include="org\Gardener.h">
+      <Filter>Header Files\Organization</Filter>
+    </ClInclude>
+    <ClInclude Include="org\Human.h">
+      <Filter>Header Files\Organization</Filter>
+    </ClInclude>
+    <ClInclude Include="org\Manager.h">
+      <Filter>Header Files\Organization</Filter>
+    </ClInclude>
+    <ClInclude Include="org\Keeper.h">
+      <Filter>Header Files\Organization</Filter>
+    </ClInclude>
+    <ClInclude Include="org\Organization.h">
+      <Filter>Header Files\Organization</Filter>
+    </ClInclude>
+    <ClInclude Include="Animal.h">
+      <Filter>Header Files\Zoo</Filter>
+    </ClInclude>
+    <ClInclude Include="Bear.h">
+      <Filter>Header Files\Zoo</Filter>
+    </ClInclude>
+    <ClInclude Include="Cat.h">
+      <Filter>Header Files\Zoo</Filter>
+    </ClInclude>
+    <ClInclude Include="Elephant.h">
+      <Filter>Header Files\Zoo</Filter>
+    </ClInclude>
+    <ClInclude Include="Giraffe.h">
+      <Filter>Header Files\Zoo</Filter>
+    </ClInclude>
+    <ClInclude Include="Kangaroo.h">
+      <Filter>Header Files\Zoo</Filter>
+    </ClInclude>
+    <ClInclude Include="Monkey.h">
+      <Filter>Header Files\Zoo</Filter>
+    </ClInclude>
+    <ClInclude Include="org\Veterinarian.h">
+      <Filter>Header Files\Organization</Filter>
+    </ClInclude>
+    <ClInclude Include="Zoo.h">
+      <Filter>Header Files\Zoo</Filter>
+    </ClInclude>
+    <ClInclude Include="start.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Animal.cpp">
+      <Filter>Source Files\Zoo_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Bear.cpp">
+      <Filter>Source Files\Zoo_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Cat.cpp">
+      <Filter>Source Files\Zoo_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Elephant.cpp">
+      <Filter>Source Files\Zoo_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Giraffe.cpp">
+      <Filter>Source Files\Zoo_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Kangaroo.cpp">
+      <Filter>Source Files\Zoo_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Monkey.cpp">
+      <Filter>Source Files\Zoo_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Zoo.cpp">
+      <Filter>Source Files\Zoo_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="org\Director.cpp">
+      <Filter>Source Files\Organization_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="org\Employee.cpp">
+      <Filter>Source Files\Organization_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="org\Gardener.cpp">
+      <Filter>Source Files\Organization_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="org\Human.cpp">
+      <Filter>Source Files\Organization_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="org\Keeper.cpp">
+      <Filter>Source Files\Organization_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="org\Manager.cpp">
+      <Filter>Source Files\Organization_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="org\Organization.cpp">
+      <Filter>Source Files\Organization_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="org\Veterinarian.cpp">
+      <Filter>Source Files\Organization_cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="start.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

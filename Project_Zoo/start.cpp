@@ -1,5 +1,6 @@
 #include "start.h"
 #include<iomanip>
+
 start::start()
 	:org("", 0), z("", "")
 {
@@ -18,7 +19,7 @@ void start::begin()
 	cout << "Добро пожаловать!\n";
 
 	Sleep(2000);
-	system("cls");
+	clearScreen();
 
 	if (org.getName() == "" || z.getZooName() == "")
 		startMenu();
@@ -137,10 +138,10 @@ void start::loadFromFile()
 }
 void start::startMenu()
 {
-	system("cls");
+	clearScreen();
 
 	cout << "Добро пожаловать!";
-	Sleep(2000);
+	Sleep(800);
 	//org
 	if (org.getName() == "") {
 		this->setOrgNameMenu();
@@ -154,10 +155,10 @@ void start::startMenu()
 }
 void start::mainMenuOrg()
 {
-	int choise = 0;
-	while (choise != 5)
+	int choice = 0;
+	while (1)
 	{
-		system("cls");
+		clearScreen();
 		cout << "Название организации: " << org.getName();
 		cout << "\nЗарплата: " << org.getBaseSalary();
 		cout << "\nКоличество сотрудников: " << org.getCountOfEmployee();
@@ -167,12 +168,23 @@ void start::mainMenuOrg()
 		2. Удалить сотрудника\n\
 		3. Информация по организации\n\
                 4. Информация по сотрудникам\n\
-		5. Выход на начальный экран выбора\n"
+		0. Выход на начальный экран выбора\n"
 			;
-		cin >> choise;
-		switch (choise)
+		cin >> choice;
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			continue;
+		}
+		switch (choice)
 		{
-
+		case 0: clearScreen();
+			return;
+			break;
 		case 1:
 			addEmpMenu();
 			break;
@@ -187,25 +199,24 @@ void start::mainMenuOrg()
 			setEmpInfoMenu();
 			pause();
 			break;
-		case 5:
-			break;
+		
 		default:
 			cout << "Неизвестная команда\nНажмити любую клавишу для продолжения\n";
 			pause();
-			system("cls");
+			clearScreen();
 			break;
 		}
 	}
-	cout << "Спасибо!\n";
+	
 	pause();
 	clearScreen();
 }
 void start::mainMenuZoo()
 {
-	int choise = 0;
-
-	while (choise != 5) {
-		clearScreen();
+	clearScreen();
+	int choice = 0;
+	while (1) {
+		
 		cout << "Имя зоопарка: " << z.getZooName();
 		cout << "\nГород: " << z.getCity();
 		cout << "\nКоличество животных: " << z.getCountOfAnimals();
@@ -215,11 +226,23 @@ void start::mainMenuZoo()
 		2. Животное переехало\n\
 		3. Показать информацию о животных\n\
                 4. Изменить информацию о животных\n\
-		5. Выход на начальный экран выбора\n"
+		0. Выход на начальный экран выбора\n"
 			;
-		cin >> choise;
-		switch (choise)
+		cin >> choice;
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			continue;
+		}
+		switch (choice)
 		{
+		case 0:clearScreen();
+			return;
+			break;
 		case 1:
 			addAnimalMenu();
 			break;
@@ -229,12 +252,11 @@ void start::mainMenuZoo()
 		case 3:
 			showAnimalInfo();
 			pause();
+			clearScreen();
 			break;
 		case 4:
 			setAnimalInfoMenu();
-			break;
-		case 5:
-			break;
+			break;		
 		default:
 			cout << "Неправильная команда\nнажмите любую кнопку чтобы продолжить\n";
 			pause();
@@ -242,27 +264,37 @@ void start::mainMenuZoo()
 			break;
 		}
 	}
-	cout << "Спасибо!\n";
+	
 	pause();
 	clearScreen();
 }
 void start::addAnimalMenu()
 {
+	clearScreen();
 	size_t ch;
 	while (1) {
-		clearScreen();
+		
 		cout << "Выберите животное\n";
-		cout << "1. Медведь\n2. Кошка\n3. Слон\n4. Жираф\n5. Кенгуру\n6. Обезьяна\n7. Выход в основное меню\n";
+		cout << "1. Медведь\n2. Кошка\n3. Слон\n4. Жираф\n5. Кенгуру\n6. Обезьяна\n0. Выход в основное меню\n";
 		cin >> ch;
-		if (ch > 7) {
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			continue;
+		}
+		if (ch > 6) {
 			cout << "Неверная позиция\n";
-			system("pause");
+			pause();
 		}
 		else
 			break;
 
 	}
-	if (ch == 7)
+	if (ch == 0)
 		return;
 	string name;
 	string color;
@@ -302,7 +334,7 @@ void start::addAnimalMenu()
 		bool hasTusk;
 		cout << "Введите длину хобота (см)\n";
 		cin >> trunkLength;
-		cout << "Есть ли у слона бивни? (1 - да, 2 - нет)\n";
+		cout << "Есть ли у слона бивни? (1 - да, 0 - нет)\n";
 		cin >> hasTusk;
 		anim = new Elephant(name, color, age, trunkLength, hasTusk);
 		break;
@@ -335,13 +367,13 @@ void start::addAnimalMenu()
 	clearScreen();
 	z.addAnimal(anim);
 	cout << "Животное добавлено!\n";
-	system("pause");
+	pause();
 }
 void start::removeAnimalMenu()
 {
 	while (1) {
 		clearScreen();
-		cout << "Выберите ID животного для отгрузки" << endl;
+		cout << "Выберите ID животного для переезда" << endl;
 		showShortAnimalInfo();
 		int ch;
 		cin >> ch;
@@ -350,7 +382,7 @@ void start::removeAnimalMenu()
 			pause();
 			continue;
 		}
-		cout << "Животное отгружено!\n";
+		cout << "Животное переехало!\n";
 		pause();
 		return;
 	}
@@ -358,50 +390,40 @@ void start::removeAnimalMenu()
 void start::showAnimalInfo() const
 {
 	clearScreen();
-	z.info();
-	while (1)
-	{
-		cout << "Хотите посмотреть что говорит каждое животное (1 - да, 0 - выход в главное меню)\n";
-
-		int ch;
-		cin >> ch;
-		if (ch == 0) break;
-		if (ch == 1)
-		{
-			showRollCall();
-		}
-	}
+	z.info();	
 }
 void start::mainMenu()
 {
-	
-	system("cls");
-
+	clearScreen();
 	while (1)
 	{
+		
 		cout << "Название организации: " << org.getName();
 		cout << "\nЗарплата: " << org.getBaseSalary();
 		cout << endl << endl;
 		cout << "Имя зоопарка: " << z.getZooName();
 		cout << "\nГород: " << z.getCity();
 		cout << "\n\n-------------------------------------------------\n\n";
-		
+
 		cout << "1 - Информация о сотрудниках\n";
 		cout << "2 - Информация о животных\n";
 		cout << "3 - Изменить название организации\n";
 		cout << "4 - Изменить название Зоопарка\n";
 		cout << "5 - Изменить зарплату\n";
 		cout << "6 - Изменить город\n";
-
 		cout << "0 - Сохранить и выйти\n";
 		int choice;
 		cin >> choice;
-		if (choice < 0 || choice>6)
-		{
-			cout << "Неизвестная команда\n";
+		
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;			
 			pause();
+			clearScreen();
 			continue;
-		}
+		}		
 
 		switch (choice)
 		{
@@ -414,7 +436,7 @@ void start::mainMenu()
 		case 2:
 			mainMenuZoo();
 			break;
-		case 3: 
+		case 3:
 			this->setOrgNameMenu();
 			clearScreen();
 			break;
@@ -426,9 +448,15 @@ void start::mainMenu()
 			this->setSalaryMenu();
 			clearScreen();
 			break;
-		case 6: 
+		case 6:
 			this->setCityNameMenu();
 			clearScreen();
+			break;
+		default:			
+				cout << "Неизвестная команда\n";
+				pause();
+				clearScreen();
+				continue;			
 			break;
 		}
 	}
@@ -437,24 +465,33 @@ void start::addEmpMenu()
 {
 	size_t ch;
 	while (1) {
-		system("cls");
+		clearScreen();
 		cout << "Выберити должность\n";
-		cout << "1. Садовод\n2. Смотритель\n3. Директор\n4. Менеджер\n5. Ветеринар\n6.Основное меню\n";
+		cout << "1. Садовод\n2. Смотритель\n3. Директор\n4. Менеджер\n5. Ветеринар\n0. Основное меню\n";
 		cin >> ch;
-		if (ch > 6) {
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			continue;
+		}
+		if (ch > 5) {
 			cout << "Неизвестная должность\n";
 			pause();
 		}
 		else
 			break;
 	}
-	if (ch == 6)
+	if (ch == 0)
 		return;
 	string name;
 	int age;
 	string sex;
 	int exp;
-	system("cls");
+	clearScreen();
 	cout << "Введите имя сотрудника\n";
 	cin >> name;
 	cout << "Введите возвраст сотрудника\n";
@@ -506,7 +543,7 @@ void start::addEmpMenu()
 		emp = new Veterinarian(name, age, sex, exp, anesthesiology, surgery, ophthalmology);
 		break;
 	}
-	system("cls");
+	clearScreen();
 	org.addEmployee(emp);
 	cout << "Сотрудник добавлен!\n";
 	pause();
@@ -514,24 +551,24 @@ void start::addEmpMenu()
 void start::removeEmpMenu()
 {
 	while (1) {
-		system("cls");
+		clearScreen();
 		cout << "Выберите ID работника для увольнения:" << endl;
 		showShortOrgInfo();
 		int ch;
 		cin >> ch;
 		if (!org.removeEmployeeById(ch)) {
 			cout << "Неверный ID!\n";
-			system("pause");
+			pause();
 			continue;
 		}
 		cout << "Работник уволен!\n";
-		system("pause");
+		pause();
 		return;
 	}
 }
 void start::showOrganizationInfo() const
 {
-	system("cls");
+	clearScreen();
 	org.getInfo();
 }
 void start::setZooNameMenu()
@@ -583,15 +620,12 @@ void start::showShortAnimalInfo() const
 		else if (ani == "Kangaroo") ani = "Кенгуру"; else if (ani == "Monkey") ani = "Обезьяна";
 
 		cout << setw(3) << left << z[i].getId()
-			
+
 			<< setw(10) << left << ani
 			<< setw(10) << left << z[i].getName() << endl;
 	}
 }
-void start::showRollCall() const
-{
-	cout << z.rollCall();
-}
+
 void start::editAnimalMenu(Animal * animal)
 {
 	while (1)
@@ -600,7 +634,7 @@ void start::editAnimalMenu(Animal * animal)
 		cout << string(typeid(*animal).name()).substr(6) << endl;
 		animal->getInfo();
 		cout << "1. Изменить информацию о животном\n";
-		cout << "2. Отгрузить животное\n";
+		cout << "2. Животное переезжает\n";
 		cout << "0. Back\n";
 		int ch;
 		cin >> ch;
@@ -613,7 +647,7 @@ void start::editAnimalMenu(Animal * animal)
 			break;
 		case 2:
 			z.removeAnimalById(animal->getId());
-			cout << "Животное отгружено!" << endl;
+			cout << "Животное переехало!" << endl;
 			pause();
 			return;
 			break;
@@ -783,7 +817,7 @@ void start::editAnimalInfo(Animal * animal)
 }
 void start::setOrgNameMenu()
 {
-	system("cls");
+	clearScreen();
 	cout << "Введите имя организации: \n";
 	string name;
 	cin >> name;
@@ -791,7 +825,7 @@ void start::setOrgNameMenu()
 }
 void start::setSalaryMenu()
 {
-	system("cls");
+	clearScreen();
 	cout << "Введите зарплату: \n";
 	int sal;
 	cin >> sal;
@@ -904,10 +938,7 @@ void start::editEmpInfo(Employee * emp)
 		else if (typeid(*emp) == typeid(Veterinarian))
 		{
 			pos = 4;
-			cout << ++index << ". Навыки анастезии\n";
-			cout << ++index << ". Навыки хирургии\n";
-			cout << ++index << ". Навыки офтальмологии\n";
-
+			cout << ++index << ". Навыки\n";			
 		}
 		cout << "0. Вернуться назад\n";
 		int ch;

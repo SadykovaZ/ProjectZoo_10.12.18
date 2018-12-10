@@ -49,7 +49,7 @@ private:
 	void setCityNameMenu();
 	void setAnimalInfoMenu();
 	void showShortAnimalInfo() const;
-	void showRollCall()const;
+	
 	void editAnimalMenu(Animal* animal);
 	void editAnimalInfo(Animal* animal);
 #pragma endregion

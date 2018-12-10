@@ -3,7 +3,7 @@
 class Elephant :
 	public Animal
 {
-	int trunkLength;
+	unsigned int trunkLength;
 	bool hasTusk; //наличие бивня
 public:
 	Elephant(string name, string color, int age, int trunkLength, bool hasTusk);
@@ -11,7 +11,7 @@ public:
 	void setTrunkLength(int trunkLength);
 	void setHasTusk(bool hasTusk);
 
-	int getTrunkLength() const { return trunkLength; }
+	unsigned int getTrunkLength() const { return trunkLength; }
 	bool getHasTusk() const { return hasTusk; }
 
 	void getInfo() const override;

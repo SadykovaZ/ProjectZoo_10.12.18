@@ -68,19 +68,6 @@ const Animal * Zoo::getAnimalById(int id) const
 	}
 	return nullptr;
 }
-string Zoo::rollCall() const
-{
-	string res;
-	for (size_t i = 0; i < animals.size(); i++)
-	{
-		string tmp = typeid(*animals[i]).name();
-		tmp = tmp.substr(6);
-		res += tmp + " ";
-		res += animals[i]->getName() + " говорит ";
-		res += animals[i]->voice() += "\n";
-	}
-	return res;
-}
 void Zoo::info() const
 {
 	

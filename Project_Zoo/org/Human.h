@@ -8,7 +8,7 @@ using namespace std;
 class Human// abstract
 {
 	string name;
-	int age;
+	unsigned int age;
 	string sex;
 public:
 	Human(string name, int age, string sex);
@@ -17,7 +17,7 @@ public:
 	void setSex(string sex);
 
 	string getName()const { return name; }
-	int getAge()const { return age; }
+	unsigned int getAge()const { return age; }
 	string getSex()const { return sex; }
 
 	virtual void info()const;

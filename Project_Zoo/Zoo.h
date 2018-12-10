@@ -37,7 +37,7 @@ public:
 	Animal* getAnimalById(int id);
 	const Animal* getAnimalById(int id) const;
 
-	string rollCall()const;
+	
 	void info() const;	
 };
 

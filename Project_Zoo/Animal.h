@@ -6,8 +6,8 @@ class Animal abstract
 {
 	string name;
 	string color;
-	int age;
-	int id;
+	unsigned int age;
+	unsigned int id;
 	static int idSeq;
 public:
 	Animal(string name, string color, int age);
@@ -18,12 +18,12 @@ public:
 
 	string getName() const { return name; }
 	string getColor() const { return color; }
-	int getAge() const { return age; }
+	unsigned int getAge() const { return age; }
 	
 	virtual void getInfo() const;
 	virtual string voice() const = 0;
 
-	int getId() const { return id; }
+	unsigned int getId() const { return id; }
 	string getPosition() const { return (string(typeid(*this).name()).substr(6)); }
 
 	virtual string getStringFileInfo()const;

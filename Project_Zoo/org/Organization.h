@@ -8,11 +8,11 @@ class Organization
 {
 	string name;
 	vector<unique_ptr<Employee>>employees;
-	int baseSalary;
+	unsigned int baseSalary;
 public:
 	void setName(string name);
 	void setBaseSalary(int baseSalary);
-	int getBaseSalary()const { return baseSalary; }
+	unsigned int getBaseSalary()const { return baseSalary; }
 	string getName()const { return name; }
 	Organization(string name, int baseSalary);
 	void addEmployee(Employee* employee);

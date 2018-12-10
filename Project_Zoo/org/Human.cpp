@@ -4,6 +4,7 @@ Human::Human(string name, int age, string sex)
 {
 	this->name = name;
 	this->age = age;
+
 	this->sex = sex;
 }
 
@@ -14,10 +15,8 @@ void Human::setName(string name)
 
 void Human::setAge(int age)
 {
-	if (age < 0)
-		cout << "Неправильный возраст\n";
-	else
-		this->age = age;
+
+	this->age = age;
 }
 
 void Human::setSex(string sex)

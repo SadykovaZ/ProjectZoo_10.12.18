@@ -1,4 +1,4 @@
-﻿
+
 #include"start.h"
 
 void main()
@@ -11,5 +11,6 @@ void main()
 	start s;
 	s.begin();
 	
+
 	system("pause");
 }

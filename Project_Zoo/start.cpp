@@ -1,4 +1,4 @@
-#include "start.h"
+ï»¿#include "start.h"
 #include<iomanip>
 
 start::start()
@@ -16,7 +16,7 @@ start::start()
 
 void start::begin()
 {
-	cout << "Äîáðî ïîæàëîâàòü!\n";
+	cout << "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ!\n";
 
 	Sleep(2000);
 	clearScreen();
@@ -58,7 +58,7 @@ void start::loadFromFile()
 	{
 		ifstream file("org.txt");
 		if (!file)
-			throw exception("Íåâîçìîæíî îòêðûòü ôàéë!");
+			throw exception("ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚ÑŒ Ñ„Ð°Ð¹Ð»!");
 		string s;
 		getline(file, s);
 		org.setName(s.substr(0, s.find(';')));
@@ -96,7 +96,7 @@ void start::loadFromFile()
 	{
 		ifstream file("zoo.txt");
 		if (!file)
-			throw exception("Íåâîçìîæíî îòêðûòü ôàéë!");
+			throw exception("ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚ÑŒ Ñ„Ð°Ð¹Ð»!");
 		string s;
 		getline(file, s);
 		z.setZooName(s.substr(0, s.find(';')));
@@ -140,7 +140,7 @@ void start::startMenu()
 {
 	clearScreen();
 
-	cout << "Äîáðî ïîæàëîâàòü!";
+	cout << "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ!";
 	Sleep(800);
 	//org
 	if (org.getName() == "") {
@@ -159,23 +159,23 @@ void start::mainMenuOrg()
 	while (1)
 	{
 		clearScreen();
-		cout << "Íàçâàíèå îðãàíèçàöèè: " << org.getName();
-		cout << "\nÇàðïëàòà: " << org.getBaseSalary();
-		cout << "\nÊîëè÷åñòâî ñîòðóäíèêîâ: " << org.getCountOfEmployee();
+		cout << "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¾Ñ€Ð³Ð°Ð½Ð¸Ð·Ð°Ñ†Ð¸Ð¸: " << org.getName();
+		cout << "\nÐ—Ð°Ñ€Ð¿Ð»Ð°Ñ‚Ð°: " << org.getBaseSalary();
+		cout << "\nÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ¾Ð²: " << org.getCountOfEmployee();
 		cout << "\n\n----------------------------\n\n";
 		cout << "\
-		1. Äîáàâèòü íîâîãî ñîòðóäíèêà\n\
-		2. Óäàëèòü ñîòðóäíèêà\n\
-		3. Èíôîðìàöèÿ ïî îðãàíèçàöèè\n\
-                4. Èíôîðìàöèÿ ïî ñîòðóäíèêàì\n\
-		0. Âûõîä íà íà÷àëüíûé ýêðàí âûáîðà\n"
+		1. Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\n\
+		2. Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\n\
+		3. Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¿Ð¾ Ð¾Ñ€Ð³Ð°Ð½Ð¸Ð·Ð°Ñ†Ð¸Ð¸\n\
+                4. Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¿Ð¾ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°Ð¼\n\
+		0. Ð’Ñ‹Ñ…Ð¾Ð´ Ð½Ð° Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÑÐºÑ€Ð°Ð½ Ð²Ñ‹Ð±Ð¾Ñ€Ð°\n"
 			;
 		cin >> choice;
 		if (cin.fail()) {
 			clearScreen();
 			cin.clear();
 			cin.ignore();
-			cout << "Ìîæíî ââîäèòü òîëüêî öèôðû!" << endl;
+			cout << "ÐœÐ¾Ð¶Ð½Ð¾ Ð²Ð²Ð¾Ð´Ð¸Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ†Ð¸Ñ„Ñ€Ñ‹!" << endl;
 			pause();
 			clearScreen();
 			continue;
@@ -201,7 +201,7 @@ void start::mainMenuOrg()
 			break;
 		
 		default:
-			cout << "Íåèçâåñòíàÿ êîìàíäà\nÍàæìèòè ëþáóþ êëàâèøó äëÿ ïðîäîëæåíèÿ\n";
+			cout << "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð°Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°\nÐÐ°Ð¶Ð¼Ð¸Ñ‚Ð¸ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ»Ð°Ð²Ð¸ÑˆÑƒ Ð´Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ\n";
 			pause();
 			clearScreen();
 			break;
@@ -217,23 +217,23 @@ void start::mainMenuZoo()
 	int choice = 0;
 	while (1) {
 		
-		cout << "Èìÿ çîîïàðêà: " << z.getZooName();
-		cout << "\nÃîðîä: " << z.getCity();
-		cout << "\nÊîëè÷åñòâî æèâîòíûõ: " << z.getCountOfAnimals();
+		cout << "Ð˜Ð¼Ñ Ð·Ð¾Ð¾Ð¿Ð°Ñ€ÐºÐ°: " << z.getZooName();
+		cout << "\nÐ“Ð¾Ñ€Ð¾Ð´: " << z.getCity();
+		cout << "\nÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ñ‹Ñ…: " << z.getCountOfAnimals();
 		cout << "\n\n----------------------------------------------------------\n\n";
 		cout << "\
-		1. Äîáàâèòü íîâîå æèâîòíîå\n\
-		2. Æèâîòíîå ïåðååõàëî\n\
-		3. Ïîêàçàòü èíôîðìàöèþ î æèâîòíûõ\n\
-                4. Èçìåíèòü èíôîðìàöèþ î æèâîòíûõ\n\
-		0. Âûõîä íà íà÷àëüíûé ýêðàí âûáîðà\n"
+		1. Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²Ð¾Ðµ Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ðµ\n\
+		2. Ð–Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ðµ Ð¿ÐµÑ€ÐµÐµÑ…Ð°Ð»Ð¾\n\
+		3. ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ñ‹Ñ…\n\
+                4. Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ñ‹Ñ…\n\
+		0. Ð’Ñ‹Ñ…Ð¾Ð´ Ð½Ð° Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÑÐºÑ€Ð°Ð½ Ð²Ñ‹Ð±Ð¾Ñ€Ð°\n"
 			;
 		cin >> choice;
 		if (cin.fail()) {
 			clearScreen();
 			cin.clear();
 			cin.ignore();
-			cout << "Ìîæíî ââîäèòü òîëüêî öèôðû!" << endl;
+			cout << "ÐœÐ¾Ð¶Ð½Ð¾ Ð²Ð²Ð¾Ð´Ð¸Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ†Ð¸Ñ„Ñ€Ñ‹!" << endl;
 			pause();
 			clearScreen();
 			continue;
@@ -258,7 +258,8 @@ void start::mainMenuZoo()
 			setAnimalInfoMenu();
 			break;		
 		default:
-			cout << "Íåïðàâèëüíàÿ êîìàíäà\níàæìèòå ëþáóþ êíîïêó ÷òîáû ïðîäîëæèòü\n";
+			cout << "ÐÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð°Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°\nÐ½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶Ð¸Ñ‚ÑŒ\n";
+
 			pause();
 			clearScreen();
 			break;
@@ -274,20 +275,20 @@ void start::addAnimalMenu()
 	size_t ch;
 	while (1) {
 		
-		cout << "Âûáåðèòå æèâîòíîå\n";
-		cout << "1. Ìåäâåäü\n2. Êîøêà\n3. Ñëîí\n4. Æèðàô\n5. Êåíãóðó\n6. Îáåçüÿíà\n0. Âûõîä â îñíîâíîå ìåíþ\n";
+		cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ðµ\n";
+		cout << "1. ÐœÐµÐ´Ð²ÐµÐ´ÑŒ\n2. ÐšÐ¾ÑˆÐºÐ°\n3. Ð¡Ð»Ð¾Ð½\n4. Ð–Ð¸Ñ€Ð°Ñ„\n5. ÐšÐµÐ½Ð³ÑƒÑ€Ñƒ\n6. ÐžÐ±ÐµÐ·ÑŒÑÐ½Ð°\n0. Ð’Ñ‹Ñ…Ð¾Ð´ Ð² Ð¾ÑÐ½Ð¾Ð²Ð½Ð¾Ðµ Ð¼ÐµÐ½ÑŽ\n";
 		cin >> ch;
 		if (cin.fail()) {
 			clearScreen();
 			cin.clear();
 			cin.ignore();
-			cout << "Ìîæíî ââîäèòü òîëüêî öèôðû!" << endl;
+			cout << "ÐœÐ¾Ð¶Ð½Ð¾ Ð²Ð²Ð¾Ð´Ð¸Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ†Ð¸Ñ„Ñ€Ñ‹!" << endl;
 			pause();
 			clearScreen();
 			continue;
 		}
 		if (ch > 6) {
-			cout << "Íåâåðíàÿ ïîçèöèÿ\n";
+			cout << "ÐÐµÐ²ÐµÑ€Ð½Ð°Ñ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ\n";
 			pause();
 		}
 		else
@@ -300,11 +301,11 @@ void start::addAnimalMenu()
 	string color;
 	int age;
 	clearScreen();
-	cout << "Ââåäèòå èìÿ æèâîòíîãî\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ð³Ð¾\n";
 	cin >> name;
-	cout << "Ââåäèòå öâåò æèâîòíîãî\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†Ð²ÐµÑ‚ Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ð³Ð¾\n";
 	cin >> color;
-	cout << "Ââåäèòå âîçðàñò æèâîòíîãî\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚ Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ð³Ð¾\n";
 	cin >> age;
 
 	Animal*anim = nullptr;
@@ -314,7 +315,7 @@ void start::addAnimalMenu()
 	{
 
 		string type;
-		cout << "Ââåäèòå âèä ìåäâåäÿ\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²Ð¸Ð´ Ð¼ÐµÐ´Ð²ÐµÐ´Ñ\n";
 		cin >> type;
 		anim = new Bear(name, color, age, type);
 		break;
@@ -323,7 +324,7 @@ void start::addAnimalMenu()
 	{
 		string breed;
 
-		cout << "Ââåäèòå ïîðîäó\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð¾Ñ€Ð¾Ð´Ñƒ\n";
 		cin >> breed;
 		anim = new Cat(name, color, age, breed);
 		break;
@@ -332,9 +333,9 @@ void start::addAnimalMenu()
 	{
 		int trunkLength;
 		bool hasTusk;
-		cout << "Ââåäèòå äëèíó õîáîòà (ñì)\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð»Ð¸Ð½Ñƒ Ñ…Ð¾Ð±Ð¾Ñ‚Ð° (ÑÐ¼)\n";
 		cin >> trunkLength;
-		cout << "Åñòü ëè ó ñëîíà áèâíè? (1 - äà, 0 - íåò)\n";
+		cout << "Ð•ÑÑ‚ÑŒ Ð»Ð¸ Ñƒ ÑÐ»Ð¾Ð½Ð° Ð±Ð¸Ð²Ð½Ð¸? (1 - Ð´Ð°, 0 - Ð½ÐµÑ‚)\n";
 		cin >> hasTusk;
 		anim = new Elephant(name, color, age, trunkLength, hasTusk);
 		break;
@@ -342,7 +343,7 @@ void start::addAnimalMenu()
 	case 4:
 	{
 		int neckLength;
-		cout << "Ââåäèòå äëèíó øåè\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð»Ð¸Ð½Ñƒ ÑˆÐµÐ¸\n";
 		cin >> neckLength;
 		anim = new Giraffe(name, color, age, neckLength);
 		break;
@@ -350,7 +351,7 @@ void start::addAnimalMenu()
 	case 5:
 	{
 		int bagSize;
-		cout << "Ââåäèòå ðàçìåð ñóìêè\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€ ÑÑƒÐ¼ÐºÐ¸\n";
 		cin >> bagSize;
 		anim = new Kangaroo(name, color, age, bagSize);
 		break;
@@ -358,7 +359,7 @@ void start::addAnimalMenu()
 	case 6:
 	{
 		string type;
-		cout << "Ââåäèòå âèä îáåçüÿíû\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²Ð¸Ð´ Ð¾Ð±ÐµÐ·ÑŒÑÐ½Ñ‹\n";
 		cin >> type;
 		anim = new Monkey(name, color, age, type);
 		break;
@@ -366,23 +367,23 @@ void start::addAnimalMenu()
 	}
 	clearScreen();
 	z.addAnimal(anim);
-	cout << "Æèâîòíîå äîáàâëåíî!\n";
+	cout << "Ð–Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ðµ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¾!\n";
 	pause();
 }
 void start::removeAnimalMenu()
 {
 	while (1) {
 		clearScreen();
-		cout << "Âûáåðèòå ID æèâîòíîãî äëÿ ïåðååçäà" << endl;
+		cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ID Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ð³Ð¾ Ð´Ð»Ñ Ð¿ÐµÑ€ÐµÐµÐ·Ð´Ð°" << endl;
 		showShortAnimalInfo();
 		int ch;
 		cin >> ch;
 		if (!z.removeAnimalById(ch)) {
-			cout << "Íåâåðíûé ID!\n";
+			cout << "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ ID!\n";
 			pause();
 			continue;
 		}
-		cout << "Æèâîòíîå ïåðååõàëî!\n";
+		cout << "Ð–Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ðµ Ð¿ÐµÑ€ÐµÐµÑ…Ð°Ð»Ð¾!\n";
 		pause();
 		return;
 	}
@@ -398,20 +399,20 @@ void start::mainMenu()
 	while (1)
 	{
 		
-		cout << "Íàçâàíèå îðãàíèçàöèè: " << org.getName();
-		cout << "\nÇàðïëàòà: " << org.getBaseSalary();
+		cout << "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¾Ñ€Ð³Ð°Ð½Ð¸Ð·Ð°Ñ†Ð¸Ð¸: " << org.getName();
+		cout << "\nÐ—Ð°Ñ€Ð¿Ð»Ð°Ñ‚Ð°: " << org.getBaseSalary();
 		cout << endl << endl;
-		cout << "Èìÿ çîîïàðêà: " << z.getZooName();
-		cout << "\nÃîðîä: " << z.getCity();
+		cout << "Ð˜Ð¼Ñ Ð·Ð¾Ð¾Ð¿Ð°Ñ€ÐºÐ°: " << z.getZooName();
+		cout << "\nÐ“Ð¾Ñ€Ð¾Ð´: " << z.getCity();
 		cout << "\n\n-------------------------------------------------\n\n";
 
-		cout << "1 - Èíôîðìàöèÿ î ñîòðóäíèêàõ\n";
-		cout << "2 - Èíôîðìàöèÿ î æèâîòíûõ\n";
-		cout << "3 - Èçìåíèòü íàçâàíèå îðãàíèçàöèè\n";
-		cout << "4 - Èçìåíèòü íàçâàíèå Çîîïàðêà\n";
-		cout << "5 - Èçìåíèòü çàðïëàòó\n";
-		cout << "6 - Èçìåíèòü ãîðîä\n";
-		cout << "0 - Ñîõðàíèòü è âûéòè\n";
+		cout << "1 - Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°Ñ…\n";
+		cout << "2 - Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ñ‹Ñ…\n";
+		cout << "3 - Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¾Ñ€Ð³Ð°Ð½Ð¸Ð·Ð°Ñ†Ð¸Ð¸\n";
+		cout << "4 - Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð—Ð¾Ð¾Ð¿Ð°Ñ€ÐºÐ°\n";
+		cout << "5 - Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð·Ð°Ñ€Ð¿Ð»Ð°Ñ‚Ñƒ\n";
+		cout << "6 - Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð³Ð¾Ñ€Ð¾Ð´\n";
+		cout << "0 - Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð¸ Ð²Ñ‹Ð¹Ñ‚Ð¸\n";
 		int choice;
 		cin >> choice;
 		
@@ -419,7 +420,7 @@ void start::mainMenu()
 			clearScreen();
 			cin.clear();
 			cin.ignore();
-			cout << "Ìîæíî ââîäèòü òîëüêî öèôðû!" << endl;			
+			cout << "ÐœÐ¾Ð¶Ð½Ð¾ Ð²Ð²Ð¾Ð´Ð¸Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ†Ð¸Ñ„Ñ€Ñ‹!" << endl;			
 			pause();
 			clearScreen();
 			continue;
@@ -453,7 +454,7 @@ void start::mainMenu()
 			clearScreen();
 			break;
 		default:			
-				cout << "Íåèçâåñòíàÿ êîìàíäà\n";
+				cout << "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð°Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°\n";
 				pause();
 				clearScreen();
 				continue;			
@@ -466,20 +467,20 @@ void start::addEmpMenu()
 	size_t ch;
 	while (1) {
 		clearScreen();
-		cout << "Âûáåðèòè äîëæíîñòü\n";
-		cout << "1. Ñàäîâîä\n2. Ñìîòðèòåëü\n3. Äèðåêòîð\n4. Ìåíåäæåð\n5. Âåòåðèíàð\n0. Îñíîâíîå ìåíþ\n";
+		cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ð¸ Ð´Ð¾Ð»Ð¶Ð½Ð¾ÑÑ‚ÑŒ\n";
+		cout << "1. Ð¡Ð°Ð´Ð¾Ð²Ð¾Ð´\n2. Ð¡Ð¼Ð¾Ñ‚Ñ€Ð¸Ñ‚ÐµÐ»ÑŒ\n3. Ð”Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€\n4. ÐœÐµÐ½ÐµÐ´Ð¶ÐµÑ€\n5. Ð’ÐµÑ‚ÐµÑ€Ð¸Ð½Ð°Ñ€\n0. ÐžÑÐ½Ð¾Ð²Ð½Ð¾Ðµ Ð¼ÐµÐ½ÑŽ\n";
 		cin >> ch;
 		if (cin.fail()) {
 			clearScreen();
 			cin.clear();
 			cin.ignore();
-			cout << "Ìîæíî ââîäèòü òîëüêî öèôðû!" << endl;
+			cout << "ÐœÐ¾Ð¶Ð½Ð¾ Ð²Ð²Ð¾Ð´Ð¸Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ†Ð¸Ñ„Ñ€Ñ‹!" << endl;
 			pause();
 			clearScreen();
 			continue;
 		}
 		if (ch > 5) {
-			cout << "Íåèçâåñòíàÿ äîëæíîñòü\n";
+			cout << "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð°Ñ Ð´Ð¾Ð»Ð¶Ð½Ð¾ÑÑ‚ÑŒ\n";
 			pause();
 		}
 		else
@@ -492,26 +493,26 @@ void start::addEmpMenu()
 	string sex;
 	int exp;
 	clearScreen();
-	cout << "Ââåäèòå èìÿ ñîòðóäíèêà\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\n";
 	cin >> name;
-	cout << "Ââåäèòå âîçâðàñò ñîòðóäíèêà\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²Ð¾Ð·Ð²Ñ€Ð°ÑÑ‚ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\n";
 	cin >> age;
-	cout << "Ââåäèòå ïîë ñîòðóäíèêà\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð¾Ð» ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\n";
 	cin >> sex;
-	cout << "Ââåäèòå îïûò ñîòðóäíèêà\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¾Ð¿Ñ‹Ñ‚ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\n";
 	cin >> exp;
 	Employee*emp = nullptr;
 	switch (ch)
 	{
 	case 1:
 		bool creativeSkills;
-		cout << "Èìååòñÿ ëè òâîð÷åñêèé ñòèëü? (1 - äà, 0 - íåò)\n";
+		cout << "Ð˜Ð¼ÐµÐµÑ‚ÑÑ Ð»Ð¸ Ñ‚Ð²Ð¾Ñ€Ñ‡ÐµÑÐºÐ¸Ð¹ ÑÑ‚Ð¸Ð»ÑŒ? (1 - Ð´Ð°, 0 - Ð½ÐµÑ‚)\n";
 		cin >> creativeSkills;
 		emp = new Gardener(name, age, sex, exp, creativeSkills);
 		break;
 	case 2:
 		bool attentiveness;
-		cout << "Âíèìàòåëüíîñòü? (1 - äà, 0 - íåò)\n";
+		cout << "Ð’Ð½Ð¸Ð¼Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ? (1 - Ð´Ð°, 0 - Ð½ÐµÑ‚)\n";
 		cin >> attentiveness;
 
 		emp = new Keeper(name, age, sex, exp, attentiveness);
@@ -522,9 +523,9 @@ void start::addEmpMenu()
 	case 4:
 		bool edu1;
 		bool communication;
-		cout << "Íàëè÷èå âûñøåãî îáðàçîâàíèÿ? (1 - äà, 0 - íåò)\n" << endl;
+		cout << "ÐÐ°Ð»Ð¸Ñ‡Ð¸Ðµ Ð²Ñ‹ÑÑˆÐµÐ³Ð¾ Ð¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð¸Ñ? (1 - Ð´Ð°, 0 - Ð½ÐµÑ‚)\n" << endl;
 		cin >> edu1;
-		cout << "Êîììóíèêàòèâíîñòü? (1 - äà, 0 - íåò)\n" << endl;
+		cout << "ÐšÐ¾Ð¼Ð¼ÑƒÐ½Ð¸ÐºÐ°Ñ‚Ð¸Ð²Ð½Ð¾ÑÑ‚ÑŒ? (1 - Ð´Ð°, 0 - Ð½ÐµÑ‚)\n" << endl;
 		cin >> communication;
 		emp = new Manager(name, age, sex, exp, edu1, communication);
 		break;
@@ -532,12 +533,12 @@ void start::addEmpMenu()
 		bool anesthesiology;
 		bool surgery;
 		bool ophthalmology;
-		cout << "Îáëàäàåò ëè ñîòðóäíèê ñëåäóþùèìè íàâûêàìè: \n";
-		cout << "àíåñòåçèîëîãèè? (1 - äà, 0 - íåò)\n" << endl;
+		cout << "ÐžÐ±Ð»Ð°Ð´Ð°ÐµÑ‚ Ð»Ð¸ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¼Ð¸ Ð½Ð°Ð²Ñ‹ÐºÐ°Ð¼Ð¸: \n";
+		cout << "Ð°Ð½ÐµÑÑ‚ÐµÐ·Ð¸Ð¾Ð»Ð¾Ð³Ð¸Ð¸? (1 - Ð´Ð°, 0 - Ð½ÐµÑ‚)\n" << endl;
 		cin >> anesthesiology;
-		cout << "õèðóðãèÿ? (1 - äà, 0 - íåò)\n" << endl;
+		cout << "Ñ…Ð¸Ñ€ÑƒÑ€Ð³Ð¸Ñ? (1 - Ð´Ð°, 0 - Ð½ÐµÑ‚)\n" << endl;
 		cin >> surgery;
-		cout << "îôòàëüìîëîãèÿ? (1 - äà, 0 - íåò)\n" << endl;
+		cout << "Ð¾Ñ„Ñ‚Ð°Ð»ÑŒÐ¼Ð¾Ð»Ð¾Ð³Ð¸Ñ? (1 - Ð´Ð°, 0 - Ð½ÐµÑ‚)\n" << endl;
 		cin >> ophthalmology;
 
 		emp = new Veterinarian(name, age, sex, exp, anesthesiology, surgery, ophthalmology);
@@ -545,23 +546,23 @@ void start::addEmpMenu()
 	}
 	clearScreen();
 	org.addEmployee(emp);
-	cout << "Ñîòðóäíèê äîáàâëåí!\n";
+	cout << "Ð¡Ð¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸Ðº Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½!\n";
 	pause();
 }
 void start::removeEmpMenu()
 {
 	while (1) {
 		clearScreen();
-		cout << "Âûáåðèòå ID ðàáîòíèêà äëÿ óâîëüíåíèÿ:" << endl;
+		cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ID Ñ€Ð°Ð±Ð¾Ñ‚Ð½Ð¸ÐºÐ° Ð´Ð»Ñ ÑƒÐ²Ð¾Ð»ÑŒÐ½ÐµÐ½Ð¸Ñ:" << endl;
 		showShortOrgInfo();
 		int ch;
 		cin >> ch;
 		if (!org.removeEmployeeById(ch)) {
-			cout << "Íåâåðíûé ID!\n";
+			cout << "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ ID!\n";
 			pause();
 			continue;
 		}
-		cout << "Ðàáîòíèê óâîëåí!\n";
+		cout << "Ð Ð°Ð±Ð¾Ñ‚Ð½Ð¸Ðº ÑƒÐ²Ð¾Ð»ÐµÐ½!\n";
 		pause();
 		return;
 	}
@@ -574,7 +575,7 @@ void start::showOrganizationInfo() const
 void start::setZooNameMenu()
 {
 	clearScreen();
-	cout << "Ââåäèòå íàçâàíèå çîîïàðêà\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð·Ð¾Ð¾Ð¿Ð°Ñ€ÐºÐ°\n";
 	string name;
 	cin >> name;
 	z.setZooName(name);
@@ -582,7 +583,7 @@ void start::setZooNameMenu()
 void start::setCityNameMenu()
 {
 	clearScreen();
-	cout << "Ââåäèòå íàçâàíèå ãîðîäà\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð³Ð¾Ñ€Ð¾Ð´Ð°\n";
 	string name;
 	cin >> name;
 	z.setCity(name);
@@ -593,8 +594,8 @@ void start::setAnimalInfoMenu()
 	{
 		clearScreen();
 		showShortAnimalInfo();
-		cout << "0- Âåðíóòüñÿ íàçàä";
-		cout << "\nÂûáðàòü ID æèâîòíîãî: ";
+		cout << "0- Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð°Ð·Ð°Ð´";
+		cout << "\nÐ’Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ ID Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ð³Ð¾: ";
 		int ch;
 		cin >> ch;
 		if (ch == 0) break;
@@ -602,7 +603,7 @@ void start::setAnimalInfoMenu()
 
 		if (anim == nullptr)
 		{
-			cout << "Íåâåðíûé ID\n";
+			cout << "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ ID\n";
 			pause();
 			continue;
 		}
@@ -615,9 +616,9 @@ void start::showShortAnimalInfo() const
 	for (int i = 0; i < z.getCountOfAnimals(); i++)
 	{
 		ani = string(typeid(z[i]).name()).substr(6);
-		if (ani == "Bear") ani = "Ìåäâåäü"; else if (ani == "Cat") ani = "Êîøêà";
-		else if (ani == "Elephant") ani = "Ñëîí"; else if (ani == "Giraffe") ani = "Æèðàô";
-		else if (ani == "Kangaroo") ani = "Êåíãóðó"; else if (ani == "Monkey") ani = "Îáåçüÿíà";
+		if (ani == "Bear") ani = "ÐœÐµÐ´Ð²ÐµÐ´ÑŒ"; else if (ani == "Cat") ani = "ÐšÐ¾ÑˆÐºÐ°";
+		else if (ani == "Elephant") ani = "Ð¡Ð»Ð¾Ð½"; else if (ani == "Giraffe") ani = "Ð–Ð¸Ñ€Ð°Ñ„";
+		else if (ani == "Kangaroo") ani = "ÐšÐµÐ½Ð³ÑƒÑ€Ñƒ"; else if (ani == "Monkey") ani = "ÐžÐ±ÐµÐ·ÑŒÑÐ½Ð°";
 
 		cout << setw(3) << left << z[i].getId()
 
@@ -633,8 +634,8 @@ void start::editAnimalMenu(Animal * animal)
 		clearScreen();
 		cout << string(typeid(*animal).name()).substr(6) << endl;
 		animal->getInfo();
-		cout << "1. Èçìåíèòü èíôîðìàöèþ î æèâîòíîì\n";
-		cout << "2. Æèâîòíîå ïåðååçæàåò\n";
+		cout << "1. Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ð¶Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ð¼\n";
+		cout << "2. Ð–Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ðµ Ð¿ÐµÑ€ÐµÐµÐ·Ð¶Ð°ÐµÑ‚\n";
 		cout << "0. Back\n";
 		int ch;
 		cin >> ch;
@@ -647,12 +648,12 @@ void start::editAnimalMenu(Animal * animal)
 			break;
 		case 2:
 			z.removeAnimalById(animal->getId());
-			cout << "Æèâîòíîå ïåðååõàëî!" << endl;
+			cout << "Ð–Ð¸Ð²Ð¾Ñ‚Ð½Ð¾Ðµ Ð¿ÐµÑ€ÐµÐµÑ…Ð°Ð»Ð¾!" << endl;
 			pause();
 			return;
 			break;
 		default:
-			cout << "Íåèçâåñòíàÿ êîìàíäà";
+			cout << "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð°Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°";
 			break;
 		}
 	}
@@ -664,53 +665,53 @@ void start::editAnimalInfo(Animal * animal)
 		clearScreen();
 		animal->getInfo();
 		int index = 0;
-		cout << "\nÂûáåðèòå êàêóþ èíôîðìàöèþ èçìåíèòü\n";
-		cout << ++index << ". Èìÿ\n";
-		cout << ++index << ". Öâåò\n";
-		cout << ++index << ". Âîçðàñò\n";
+		cout << "\nÐ’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ°ÐºÑƒÑŽ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ\n";
+		cout << ++index << ". Ð˜Ð¼Ñ\n";
+		cout << ++index << ". Ð¦Ð²ÐµÑ‚\n";
+		cout << ++index << ". Ð’Ð¾Ð·Ñ€Ð°ÑÑ‚\n";
 
 		int pos;
 		if (typeid(*animal) == typeid(Bear))
 		{
 			pos = 1;
-			cout << ++index << ". Âèä ìåäâåäÿ\n";
+			cout << ++index << ". Ð’Ð¸Ð´ Ð¼ÐµÐ´Ð²ÐµÐ´Ñ\n";
 		}
 		else if (typeid(*animal) == typeid(Cat))
 		{
 			pos = 2;
-			cout << ++index << ". Ïîðîäà \n";
+			cout << ++index << ". ÐŸÐ¾Ñ€Ð¾Ð´Ð° \n";
 
 
 		}
 		else if (typeid(*animal) == typeid(Elephant))
 		{
 			pos = 3;
-			cout << ++index << ". Äëèíà õîáîòà (ñì) \n";
-			cout << ++index << ". Åñòü ëè áèâíè? (1 - äà, 0 - íåò) \n";
+			cout << ++index << ". Ð”Ð»Ð¸Ð½Ð° Ñ…Ð¾Ð±Ð¾Ñ‚Ð° (ÑÐ¼) \n";
+			cout << ++index << ". Ð•ÑÑ‚ÑŒ Ð»Ð¸ Ð±Ð¸Ð²Ð½Ð¸? (1 - Ð´Ð°, 0 - Ð½ÐµÑ‚) \n";
 
 		}
 		else if (typeid(*animal) == typeid(Giraffe))
 		{
 			pos = 4;
-			cout << ++index << ". Äëèíà øåè \n";
+			cout << ++index << ". Ð”Ð»Ð¸Ð½Ð° ÑˆÐµÐ¸ \n";
 		}
 		else if (typeid(*animal) == typeid(Kangaroo))
 		{
 			pos = 5;
-			cout << ++index << ". Ðàçìåð ñóìêè \n";
+			cout << ++index << ". Ð Ð°Ð·Ð¼ÐµÑ€ ÑÑƒÐ¼ÐºÐ¸ \n";
 		}
 		else if (typeid(*animal) == typeid(Monkey))
 		{
 			pos = 6;
-			cout << ++index << ". Âèä îáåçüÿíû \n";
+			cout << ++index << ". Ð’Ð¸Ð´ Ð¾Ð±ÐµÐ·ÑŒÑÐ½Ñ‹ \n";
 		}
 
-		cout << "0. Âåðíóòüñÿ íàçàä\n";
+		cout << "0. Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð°Ð·Ð°Ð´\n";
 		int ch;
 		cin >> ch;
 		if (ch < 0 || ch > index)
 		{
-			cout << "Íåèçâåñòíàÿ êîìàíäà!\n";
+			cout << "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð°Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°!\n";
 			pause();
 			continue;
 		}
@@ -721,7 +722,7 @@ void start::editAnimalInfo(Animal * animal)
 		case 1:
 		{
 			string name;
-			cout << "\n Ââåäèòå íîâîå èìÿ: ";
+			cout << "\n Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð²Ð¾Ðµ Ð¸Ð¼Ñ: ";
 			cin >> name;
 			animal->setName(name);
 			break;
@@ -729,7 +730,7 @@ void start::editAnimalInfo(Animal * animal)
 		case 2:
 		{
 			string color;
-			cout << "\n Ââåäèòå íîâûé âîçðàñò: ";
+			cout << "\n Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð²Ñ‹Ð¹ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚: ";
 			cin >> color;
 			animal->setColor(color);
 			break;
@@ -737,7 +738,7 @@ void start::editAnimalInfo(Animal * animal)
 		case 3:
 		{
 			int age;
-			cout << "\n Ââåäèòå íîâûé âîçðàñò: ";
+			cout << "\n Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð²Ñ‹Ð¹ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚: ";
 			cin >> age;
 			animal->setAge(age);
 			break;
@@ -749,7 +750,7 @@ void start::editAnimalInfo(Animal * animal)
 			case 1:
 				if (ch == 4)
 				{
-					cout << "Ââåäèòå âèä ìåäâåäÿ\n";
+					cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²Ð¸Ð´ Ð¼ÐµÐ´Ð²ÐµÐ´Ñ\n";
 					string type;
 					cin >> type;
 					((Bear*)animal)->setType(type);
@@ -758,7 +759,7 @@ void start::editAnimalInfo(Animal * animal)
 			case 2:
 				if (ch == 4)
 				{
-					cout << "Ââåäèòå ïîðîäó\n";
+					cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð¾Ñ€Ð¾Ð´Ñƒ\n";
 					string breed;
 					cin >> breed;
 					((Cat*)animal)->setBreed(breed);
@@ -767,14 +768,14 @@ void start::editAnimalInfo(Animal * animal)
 			case 3:
 				if (ch == 4)
 				{
-					cout << "Ââåäèòå äëèíó õîáîòà\n";
+					cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð»Ð¸Ð½Ñƒ Ñ…Ð¾Ð±Ð¾Ñ‚Ð°\n";
 					int trunkLength;
 					cin >> trunkLength;
 					((Elephant*)animal)->setTrunkLength(trunkLength);
 				}
 				else
 				{
-					cout << "Åñòü ëè áèâíè\n";
+					cout << "Ð•ÑÑ‚ÑŒ Ð»Ð¸ Ð±Ð¸Ð²Ð½Ð¸\n";
 					bool hasTusk;
 					cin >> hasTusk;
 					((Elephant*)animal)->setHasTusk(hasTusk);
@@ -783,7 +784,7 @@ void start::editAnimalInfo(Animal * animal)
 			case 4:
 				if (ch == 4)
 				{
-					cout << "Ðàçìåð øåè\n";
+					cout << "Ð Ð°Ð·Ð¼ÐµÑ€ ÑˆÐµÐ¸\n";
 					int neckLength;
 					cin >> neckLength;
 					((Giraffe*)animal)->setNeckLength(neckLength);
@@ -792,7 +793,7 @@ void start::editAnimalInfo(Animal * animal)
 			case 5:
 				if (ch == 4)
 				{
-					cout << "Ðàçìåð ñóìêè\n";
+					cout << "Ð Ð°Ð·Ð¼ÐµÑ€ ÑÑƒÐ¼ÐºÐ¸\n";
 					int bagSize;
 					cin >> bagSize;
 					((Kangaroo*)animal)->setBagSize(bagSize);
@@ -801,7 +802,7 @@ void start::editAnimalInfo(Animal * animal)
 			case 6:
 				if (ch == 4)
 				{
-					cout << "Âèä îáåçüÿíû\n";
+					cout << "Ð’Ð¸Ð´ Ð¾Ð±ÐµÐ·ÑŒÑÐ½Ñ‹\n";
 					string type;
 					cin >> type;
 					((Monkey*)animal)->setType(type);
@@ -818,7 +819,7 @@ void start::editAnimalInfo(Animal * animal)
 void start::setOrgNameMenu()
 {
 	clearScreen();
-	cout << "Ââåäèòå èìÿ îðãàíèçàöèè: \n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ Ð¾Ñ€Ð³Ð°Ð½Ð¸Ð·Ð°Ñ†Ð¸Ð¸: \n";
 	string name;
 	cin >> name;
 	org.setName(name);
@@ -826,7 +827,7 @@ void start::setOrgNameMenu()
 void start::setSalaryMenu()
 {
 	clearScreen();
-	cout << "Ââåäèòå çàðïëàòó: \n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð°Ñ€Ð¿Ð»Ð°Ñ‚Ñƒ: \n";
 	int sal;
 	cin >> sal;
 	org.setBaseSalary(sal);
@@ -837,8 +838,8 @@ void start::setEmpInfoMenu()
 	{
 		clearScreen();
 		showShortOrgInfo();
-		cout << "0- Âåðíóòüñÿ íàçàä";
-		cout << "\nÂûáåðèòå ID ðàáîòíèêà: ";
+		cout << "0- Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð°Ð·Ð°Ð´";
+		cout << "\nÐ’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ID Ñ€Ð°Ð±Ð¾Ñ‚Ð½Ð¸ÐºÐ°: ";
 		int ch;
 		cin >> ch;
 		if (ch == 0) break;
@@ -846,7 +847,7 @@ void start::setEmpInfoMenu()
 
 		if (e == nullptr)
 		{
-			cout << "Íåâåðíûé ID!\n";
+			cout << "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ ID!\n";
 			pause();
 			continue;
 		}
@@ -859,11 +860,11 @@ void start::showShortOrgInfo() const
 	for (int i = 0; i < org.getCountOfEmployee(); i++)
 	{
 		emp = string(typeid(org[i]).name()).substr(6);
-		if (emp == "Director") emp = "Äèðåêòîð";
-		else if (emp == "Gardener") emp = "Ñàäîâíèê";
-		else if (emp == "Keeper") emp = "Ñìîòðèòåëü";
-		else if (emp == "Manager") emp = "Ìåíåäæåð";
-		else if (emp == "Veterinarian") emp = "Âåòåðèíàð";
+		if (emp == "Director") emp = "Ð”Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€";
+		else if (emp == "Gardener") emp = "Ð¡Ð°Ð´Ð¾Ð²Ð½Ð¸Ðº";
+		else if (emp == "Keeper") emp = "Ð¡Ð¼Ð¾Ñ‚Ñ€Ð¸Ñ‚ÐµÐ»ÑŒ";
+		else if (emp == "Manager") emp = "ÐœÐµÐ½ÐµÐ´Ð¶ÐµÑ€";
+		else if (emp == "Veterinarian") emp = "Ð’ÐµÑ‚ÐµÑ€Ð¸Ð½Ð°Ñ€";
 
 		cout << setw(3) << left << org[i].getId()
 			<< setw(10) << left << emp
@@ -877,10 +878,10 @@ void start::editEmpMenu(Employee * emp)
 		clearScreen();
 		cout << string(typeid(*emp).name()).substr(6) << endl;
 		emp->info();
-		cout << "1. Èçìåíèòü èíôîðìàöèþ î ñîòðóäíèêå\n";
-		cout << "2. Óâîëèòü ñîòðóäíèêà\n";
-		cout << "3. Ïîìåíÿòü ïîçèöèþ ñîòðóäíèêà\n";
-		cout << "0. Íàçàä\n";
+		cout << "1. Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐµ\n";
+		cout << "2. Ð£Ð²Ð¾Ð»Ð¸Ñ‚ÑŒ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\n";
+		cout << "3. ÐŸÐ¾Ð¼ÐµÐ½ÑÑ‚ÑŒ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\n";
+		cout << "0. ÐÐ°Ð·Ð°Ð´\n";
 		int ch;
 		cin >> ch;
 		switch (ch)
@@ -892,7 +893,7 @@ void start::editEmpMenu(Employee * emp)
 			break;
 		case 2:
 			org.removeEmployeeById(emp->getId());
-			cout << "Ðàáîòíèê óâîëåí!" << endl;
+			cout << "Ð Ð°Ð±Ð¾Ñ‚Ð½Ð¸Ðº ÑƒÐ²Ð¾Ð»ÐµÐ½!" << endl;
 			pause();
 			return;
 			break;
@@ -900,7 +901,7 @@ void start::editEmpMenu(Employee * emp)
 			changePosition(emp);
 			return;
 		default:
-			cout << "Íåèçâåñòíàÿ êîìàíäà";
+			cout << "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð°Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°";
 			break;
 		}
 	}
@@ -912,40 +913,40 @@ void start::editEmpInfo(Employee * emp)
 		clearScreen();
 		emp->info();
 		int index = 0;
-		cout << "\nÂûáåðèòå èíôîðìàöèþ äëÿ èçìåíåíèÿ: \n";
-		cout << ++index << ". Èìÿ\n";
-		cout << ++index << ". Âîçðàñò\n";
-		cout << ++index << ". Ïîë\n";
-		cout << ++index << ". Îïûò ðàáîòû\n";
+		cout << "\nÐ’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ: \n";
+		cout << ++index << ". Ð˜Ð¼Ñ\n";
+		cout << ++index << ". Ð’Ð¾Ð·Ñ€Ð°ÑÑ‚\n";
+		cout << ++index << ". ÐŸÐ¾Ð»\n";
+		cout << ++index << ". ÐžÐ¿Ñ‹Ñ‚ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹\n";
 		int pos;
 		if (typeid(*emp) == typeid(Gardener))
 		{
 			pos = 1;
-			cout << ++index << ". Òâîð÷åñêèå íàâûêè\n";
+			cout << ++index << ". Ð¢Ð²Ð¾Ñ€Ñ‡ÐµÑÐºÐ¸Ðµ Ð½Ð°Ð²Ñ‹ÐºÐ¸\n";
 		}
 		else if (typeid(*emp) == typeid(Keeper))
 		{
 			pos = 2;
-			cout << ++index << ". Âíèìàòåëüíîñòü\n";
+			cout << ++index << ". Ð’Ð½Ð¸Ð¼Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ\n";
 		}
 		else if (typeid(*emp) == typeid(Manager))
 		{
 			pos = 3;
-			cout << ++index << ". Êîììóíèêàòèâíûå íàâûêè\n";
-			cout << ++index << ". Âûñøåå îáðàçîâàíèå\n";
+			cout << ++index << ". ÐšÐ¾Ð¼Ð¼ÑƒÐ½Ð¸ÐºÐ°Ñ‚Ð¸Ð²Ð½Ñ‹Ðµ Ð½Ð°Ð²Ñ‹ÐºÐ¸\n";
+			cout << ++index << ". Ð’Ñ‹ÑÑˆÐµÐµ Ð¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð¸Ðµ\n";
 
 		}
 		else if (typeid(*emp) == typeid(Veterinarian))
 		{
 			pos = 4;
-			cout << ++index << ". Íàâûêè\n";			
+			cout << ++index << ". ÐÐ°Ð²Ñ‹ÐºÐ¸\n";			
 		}
-		cout << "0. Âåðíóòüñÿ íàçàä\n";
+		cout << "0. Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð°Ð·Ð°Ð´\n";
 		int ch;
 		cin >> ch;
 		if (ch < 0 || ch > index)
 		{
-			cout << "Íåèçâåñòíàÿ êîììàíäà!\n";
+			cout << "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð°Ñ ÐºÐ¾Ð¼Ð¼Ð°Ð½Ð´Ð°!\n";
 			pause();
 			continue;
 		}
@@ -956,7 +957,7 @@ void start::editEmpInfo(Employee * emp)
 		case 1:
 		{
 			string name;
-			cout << "\nÂâåäèòå íîâîå èìÿ: ";
+			cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð²Ð¾Ðµ Ð¸Ð¼Ñ: ";
 			cin >> name;
 			emp->setName(name);
 			break;
@@ -964,7 +965,7 @@ void start::editEmpInfo(Employee * emp)
 		case 2:
 		{
 			int age;
-			cout << "\nÂâåäèòå âîçðàñ: ";
+			cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²Ð¾Ð·Ñ€Ð°Ñ: ";
 			cin >> age;
 			emp->setAge(age);
 			break;
@@ -972,7 +973,7 @@ void start::editEmpInfo(Employee * emp)
 		case 3:
 		{
 			string sex;
-			cout << "\nÂâåäèòå ïîë: ";
+			cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð¾Ð»: ";
 			cin >> sex;
 			emp->setSex(sex);
 			break;
@@ -980,7 +981,7 @@ void start::editEmpInfo(Employee * emp)
 		case 4:
 		{
 			int exp;
-			cout << "\nÂâåäèòå îïûò ðàáîòû: ";
+			cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¾Ð¿Ñ‹Ñ‚ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹: ";
 			cin >> exp;
 			emp->setWorkYears(exp);
 			break;
@@ -992,7 +993,7 @@ void start::editEmpInfo(Employee * emp)
 			case 1:
 				if (ch == 5)
 				{
-					cout << "Ââåäèòå èìåþòñÿ ëè òâîð÷åñêèå íàâûêè\n";
+					cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼ÐµÑŽÑ‚ÑÑ Ð»Ð¸ Ñ‚Ð²Ð¾Ñ€Ñ‡ÐµÑÐºÐ¸Ðµ Ð½Ð°Ð²Ñ‹ÐºÐ¸\n";
 					bool creativeSkills;
 					cin >> creativeSkills;
 					((Gardener*)emp)->setCreativeSkills(creativeSkills);
@@ -1001,7 +1002,7 @@ void start::editEmpInfo(Employee * emp)
 			case 2:
 				if (ch == 5)
 				{
-					cout << "Âíèìàòåëüíûé ñîòðóäíèê?\n";
+					cout << "Ð’Ð½Ð¸Ð¼Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸Ðº?\n";
 					bool attentiveness;
 					cin >> attentiveness;
 					((Keeper*)emp)->setAttentiveness(attentiveness);
@@ -1010,14 +1011,14 @@ void start::editEmpInfo(Employee * emp)
 			case 3:
 				if (ch == 5)
 				{
-					cout << "Èìåþòñÿ ëè êîììóíèêàòèâíûå íàâûêè\n";
+					cout << "Ð˜Ð¼ÐµÑŽÑ‚ÑÑ Ð»Ð¸ ÐºÐ¾Ð¼Ð¼ÑƒÐ½Ð¸ÐºÐ°Ñ‚Ð¸Ð²Ð½Ñ‹Ðµ Ð½Ð°Ð²Ñ‹ÐºÐ¸\n";
 					bool commSkills;
 					cin >> commSkills;
 					((Manager*)emp)->setCommunicationSkills(commSkills);
 				}
 				else
 				{
-					cout << "Åñòü ëè âûñøåå îáðàçîâàíèå\n";
+					cout << "Ð•ÑÑ‚ÑŒ Ð»Ð¸ Ð²Ñ‹ÑÑˆÐµÐµ Ð¾Ð±Ñ€Ð°Ð·Ð¾Ð²Ð°Ð½Ð¸Ðµ\n";
 					bool hasEdu;
 					cin >> hasEdu;
 					((Manager*)emp)->setHasEdu(hasEdu);
@@ -1026,15 +1027,15 @@ void start::editEmpInfo(Employee * emp)
 			case 4:
 				if (ch == 5)
 				{
-					cout << "Åñòü ëè ñëåäóþùèå íàâûêè:\n";
+					cout << "Ð•ÑÑ‚ÑŒ Ð»Ð¸ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ðµ Ð½Ð°Ð²Ñ‹ÐºÐ¸:\n";
 					bool anastSkills;
 					bool surgSkills;
 					bool ophSkills;
-					cout << "Àíàñòåçèè: ";
+					cout << "ÐÐ½Ð°ÑÑ‚ÐµÐ·Ð¸Ð¸: ";
 					cin >> anastSkills;
-					cout << "Õèðóðãèè: ";
+					cout << "Ð¥Ð¸Ñ€ÑƒÑ€Ð³Ð¸Ð¸: ";
 					cin >> surgSkills;
-					cout << "Îôòàëüìîëîãèè: ";
+					cout << "ÐžÑ„Ñ‚Ð°Ð»ÑŒÐ¼Ð¾Ð»Ð¾Ð³Ð¸Ð¸: ";
 					cin >> ophSkills;
 					((Veterinarian*)emp)->setAnesthesiologySkill(anastSkills);
 					((Veterinarian*)emp)->setSurgerySkill(surgSkills);
@@ -1053,18 +1054,18 @@ void start::changePosition(Employee * emp)
 	while (1)
 	{
 		clearScreen();
-		cout << "Âûáåðèòå íîâóþ ïîçèöèþ äëÿ ðàáîòíèêà " << emp->getPosition() << " " << emp->getName() << endl;
-		cout << "1. Äèðåêòîð\n";
-		cout << "2. Ñàäîâíèê\n";
-		cout << "3. Ñìîòðèòåëü\n";
-		cout << "4. Ìåíåäæåð\n";
-		cout << "5. Âåòåðèíàð\n";
-		cout << "0. Âåðíóòüñÿ íàçàä\n";
+		cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð½Ð¾Ð²ÑƒÑŽ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ð½Ð¸ÐºÐ° " << emp->getPosition() << " " << emp->getName() << endl;
+		cout << "1. Ð”Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€\n";
+		cout << "2. Ð¡Ð°Ð´Ð¾Ð²Ð½Ð¸Ðº\n";
+		cout << "3. Ð¡Ð¼Ð¾Ñ‚Ñ€Ð¸Ñ‚ÐµÐ»ÑŒ\n";
+		cout << "4. ÐœÐµÐ½ÐµÐ´Ð¶ÐµÑ€\n";
+		cout << "5. Ð’ÐµÑ‚ÐµÑ€Ð¸Ð½Ð°Ñ€\n";
+		cout << "0. Ð’ÐµÑ€Ð½ÑƒÑ‚ÑŒÑÑ Ð½Ð°Ð·Ð°Ð´\n";
 		int ch;
 		cin >> ch;
 		if (ch < 0 || ch>5)
 		{
-			cout << "Íåèçâåñòíàÿ êîìàíäà\n";
+			cout << "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð°Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°\n";
 			pause();
 			continue;
 		}

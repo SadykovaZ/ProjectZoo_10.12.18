@@ -14,7 +14,7 @@ void Monkey::getInfo() const
 {
 	Animal::getInfo();
 	cout << "\nВид обезьны: " << type << endl;
-	cout << "-------------------------------------\n";
+	cout << "\n-------------------------------------\n";
 }
 
 string Monkey::voice() const

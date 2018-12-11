@@ -714,31 +714,31 @@ void start::editAnimalInfo(Animal * animal)
 		else if (typeid(*animal) == typeid(Cat))
 		{
 			pos = 2;
-			cout << ++index << ". Порода \n";
+			cout << ++index << ". Порода\n";
 
 
 		}
 		else if (typeid(*animal) == typeid(Elephant))
 		{
 			pos = 3;
-			cout << ++index << ". Длина хобота (см) \n";
-			cout << ++index << ". Есть ли бивни? (1 - да, 0 - нет) \n";
+			cout << ++index << ". Длина хобота (см)\n";
+			cout << ++index << ". Есть ли бивни? (1 - да, 0 - нет)\n";
 
 		}
 		else if (typeid(*animal) == typeid(Giraffe))
 		{
 			pos = 4;
-			cout << ++index << ". Длина шеи \n";
+			cout << ++index << ". Длина шеи\n";
 		}
 		else if (typeid(*animal) == typeid(Kangaroo))
 		{
 			pos = 5;
-			cout << ++index << ". Размер сумки \n";
+			cout << ++index << ". Размер сумки\n";
 		}
 		else if (typeid(*animal) == typeid(Monkey))
 		{
 			pos = 6;
-			cout << ++index << ". Вид обезьяны \n";
+			cout << ++index << ". Вид обезьяны\n";
 		}
 
 		cout << "0. Вернуться назад\n";
@@ -854,7 +854,7 @@ void start::editAnimalInfo(Animal * animal)
 void start::setOrgNameMenu()
 {
 	clearScreen();
-	cout << "Введите имя организации: \n";
+	cout << "Введите имя организации:\n";
 	string name;
 	cin.ignore();
 	getline(cin, name);
@@ -885,7 +885,7 @@ void start::setEmpInfoMenu()
 	while (1)
 	{
 		clearScreen();
-		cout << "Выберите ID работника: \n";
+		cout << "Выберите ID работника:\n";
 		showShortOrgInfo();
 		cout << "0  Вернуться  назад \n";
 
@@ -968,7 +968,7 @@ void start::editEmpInfo(Employee * emp)
 		clearScreen();
 		emp->info();
 		int index = 0;
-		cout << "\nВыберите информацию для изменения: \n";
+		cout << "\nВыберите информацию для изменения:\n";
 		cout << ++index << ". Имя\n";
 		cout << ++index << ". Возраст\n";
 		cout << ++index << ". Пол\n";

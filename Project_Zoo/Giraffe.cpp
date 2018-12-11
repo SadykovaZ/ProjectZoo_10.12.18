@@ -15,7 +15,7 @@ void Giraffe::getInfo() const
 {
 	Animal::getInfo();
 	cout << "\nДлинна шеи жирафа: " << neckLength << endl;
-	cout << "-------------------------------------\n";
+	cout << "\n-------------------------------------\n";
 
 	
 }

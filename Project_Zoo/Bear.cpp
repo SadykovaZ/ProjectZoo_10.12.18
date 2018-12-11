@@ -14,7 +14,7 @@ void Bear::getInfo() const
 {
 	Animal::getInfo();
 	cout << "\nВид медведя: " << type << endl;	
-	cout << "-------------------------------------\n";
+	cout << "\n-------------------------------------\n";
 }
 
 string Bear::voice() const

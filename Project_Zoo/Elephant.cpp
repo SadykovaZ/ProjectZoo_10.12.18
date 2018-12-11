@@ -18,7 +18,7 @@ void Elephant::getInfo() const
 	Animal::getInfo();
 	cout << "\nДлина хобота: " << trunkLength;
 	cout << "\nНаличие бивней: " << boolChange(getHasTusk()) << endl;
-	cout << "-------------------------------------\n";
+	cout << "\n-------------------------------------\n";
 
 	
 }

@@ -15,7 +15,7 @@ void Cat::getInfo() const
 {
 	Animal::getInfo();
 	cout << "\nПорода семейста кошачих: " << breed<<endl;	
-	cout << "-------------------------------------\n";
+	cout << "\n-------------------------------------\n";
 
 }
 string Cat::voice() const

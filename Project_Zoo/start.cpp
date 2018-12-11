@@ -874,9 +874,20 @@ void start::setSalaryMenu()
 {
 	clearScreen();
 	cout << "Введите зарплату: \n";
-	int sal;
-	cin >> sal;
-	org.setBaseSalary(sal);
+	string s;	
+	cin >> s;
+	for (size_t i = 0; i < s.length(); i++)
+	{
+		if (s[i] < 48 || s[i]>57) {
+			clearScreen();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			s = "";
+			return;
+		}
+	}	
+	org.setBaseSalary(stoi(s));
 }
 void start::setEmpInfoMenu()
 {

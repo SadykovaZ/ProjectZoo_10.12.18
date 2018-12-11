@@ -6,19 +6,19 @@
 #include "org/Veterinarian.h"
 #include "org/Gardener.h"
 
-#include"Zoo.h"
-#include"Cat.h"
-#include"Elephant.h"
-#include"Kangaroo.h"
-#include"Bear.h"
-#include"Giraffe.h"
-#include"Monkey.h"
+#include "Zoo.h"
+#include "Cat.h"
+#include "Elephant.h"
+#include "Kangaroo.h"
+#include "Bear.h"
+#include "Giraffe.h"
+#include "Monkey.h"
 
 #include <fstream>
 #include <iostream>
 #include <Windows.h>
 #include <conio.h>
-
+#include <algorithm>
 
 
 using namespace std;

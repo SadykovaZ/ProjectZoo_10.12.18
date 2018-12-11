@@ -38,7 +38,7 @@ public:
 private:
 	void startMenu();
 	void mainMenu();
-	
+	int choice();
 
 #pragma region Zoo
 	void mainMenuZoo();

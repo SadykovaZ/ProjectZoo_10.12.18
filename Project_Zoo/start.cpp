@@ -18,7 +18,7 @@ void start::begin()
 {
 	cout << "Добро пожаловать!\n";
 
-	Sleep(2000);
+	Sleep(800);
 	clearScreen();
 
 	if (org.getName() == "" || z.getZooName() == "")
@@ -156,7 +156,7 @@ void start::startMenu()
 }
 void start::mainMenuOrg()
 {
-	string choice;
+	int ch;
 	while (1)
 	{
 		clearScreen();
@@ -169,18 +169,11 @@ void start::mainMenuOrg()
 		2. Удалить сотрудника\n\
 		3. Информация по организации\n\
         \t4. Информация по сотрудникам\n\
-		0. Выход на начальный экран выбора\n"
-			;
-		cin >> choice;
-		if (choice[0] < 48 || choice[0]>57) {
-			clearScreen();
-			cout << "Можно вводить только цифры!" << endl;
-			pause();
-			clearScreen();
-			choice = "";
-			continue;
-		}
-		switch (stoi(choice))
+		0. Выход на начальный экран выбора\n";
+
+		ch = choice();
+
+		switch (ch)
 		{
 		case 0: clearScreen();
 			return;
@@ -189,14 +182,35 @@ void start::mainMenuOrg()
 			addEmpMenu();
 			break;
 		case 2:
-			removeEmpMenu();
+			if (org.getCountOfEmployee() == 0)
+			{
+				cout << "В организации нет сотрудников\n";
+				pause();
+				continue;
+			}
+			else
+				removeEmpMenu();
 			break;
 		case 3:
-			showOrganizationInfo();
+			if (org.getCountOfEmployee() == 0)
+			{
+				cout << "В организации нет сотрудников\n";
+				pause();
+				continue;
+			}
+			else
+				showOrganizationInfo();
 			pause();
 			break;
 		case 4:
-			setEmpInfoMenu();
+			if (org.getCountOfEmployee() == 0)
+			{
+				cout << "В организации нет сотрудников\n";
+				pause();
+				continue;
+			}
+			else
+				setEmpInfoMenu();
 			pause();
 			break;
 
@@ -214,7 +228,7 @@ void start::mainMenuOrg()
 void start::mainMenuZoo()
 {
 
-	string choice;
+	int ch;
 	while (1) {
 		clearScreen();
 		cout << "Имя зоопарка: " << z.getZooName();
@@ -228,16 +242,9 @@ void start::mainMenuZoo()
         \t4. Изменить информацию о животных\n\
 		0. Выход на начальный экран выбора\n"
 			;
-		cin >> choice;
-		if (choice[0] < 48 || choice[0]>57) {
-			clearScreen();
-			cout << "Можно вводить только цифры!" << endl;
-			pause();
-			clearScreen();
-			choice = "";
-			continue;
-		}
-		switch (stoi(choice))
+		ch = choice();
+
+		switch (ch)
 		{
 		case 0:clearScreen();
 			return;
@@ -246,15 +253,36 @@ void start::mainMenuZoo()
 			addAnimalMenu();
 			break;
 		case 2:
-			removeAnimalMenu();
+			if (z.getCountOfAnimals() == 0)
+			{
+				cout << "В зоопарке нет животных\n";
+				pause();
+				continue;
+			}
+			else
+				removeAnimalMenu();
 			break;
 		case 3:
-			showAnimalInfo();
+			if (z.getCountOfAnimals() == 0)
+			{
+				cout << "В зоопарке нет животных\n";
+				pause();
+				continue;
+			}
+			else
+				showAnimalInfo();
 			pause();
 			clearScreen();
 			break;
 		case 4:
-			setAnimalInfoMenu();
+			if (z.getCountOfAnimals() == 0)
+			{
+				cout << "В зоопарке нет животных\n";
+				pause();
+				continue;
+			}
+			else
+				setAnimalInfoMenu();
 			break;
 		default:
 			cout << "Неправильная команда\nнажмите любую кнопку чтобы продолжить\n";
@@ -271,31 +299,23 @@ void start::mainMenuZoo()
 void start::addAnimalMenu()
 {
 
-	string ch;
+	int ch;
 	while (1) {
 		clearScreen();
 		cout << "Выберите животное\n";
 		cout << "1. Медведь\n2. Кошка\n3. Слон\n4. Жираф\n5. Кенгуру\n6. Обезьяна\n0. Выход в основное меню\n";
-		cin >> ch;
-		if (ch[0] < 48 || ch[0]>57) 
-		{
-			clearScreen();
-			cout << "Можно вводить только цифры!" << endl;
+		ch = choice();
+
+		if (ch > 6 || ch < 0) {
+			cout << "Неизвестная команда\n";
 			pause();
-			clearScreen();
-			ch = "";
 			continue;
-		}
-		if (stoi(ch) > 6) 
-		{
-			cout << "Неверная позиция\n";
-			pause();
 		}
 		else
 			break;
 
 	}
-	if (stoi(ch) == 0)
+	if (ch == 0)
 		return;
 	string name;
 	string color;
@@ -309,7 +329,7 @@ void start::addAnimalMenu()
 	cin >> age;
 
 	Animal*anim = nullptr;
-	switch (stoi(ch))
+	switch (ch)
 	{
 	case 1:
 	{
@@ -372,25 +392,17 @@ void start::addAnimalMenu()
 }
 void start::removeAnimalMenu()
 {
-	string ch;
+	int ch;
 	while (1) {
 		clearScreen();
 		cout << "Выберите ID животного для переезда (0 - вернуться назад)" << endl;
 		showShortAnimalInfo();
+		ch = choice();
 
-		cin >> ch;
-		if (ch[0] < 48 || ch[0]>57)
-		{
-			clearScreen();
-			cout << "Можно вводить только цифры!" << endl;
-			pause();
-			clearScreen();
-			ch = "";
-			continue;
-		}
-		if (stoi(ch) == 0)
+		if (ch == 0)
 			return;
-		if (!z.removeAnimalById(stoi(ch))) {
+		if (!z.removeAnimalById(ch))
+		{
 			cout << "Неверный ID!\n";
 			pause();
 			continue;
@@ -408,7 +420,7 @@ void start::showAnimalInfo() const
 void start::mainMenu()
 {
 	clearScreen();
-	string choice;
+	int ch;
 	while (1)
 	{
 
@@ -426,19 +438,8 @@ void start::mainMenu()
 		cout << "5. Изменить зарплату\n";
 		cout << "6. Изменить город\n";
 		cout << "0. Сохранить и выйти\n";
-		
-		cin >> choice;
-		
-		if (choice[0] < 48 || choice[0]>57) {
-			clearScreen();			
-			cout << "Можно вводить только цифры!" << endl;
-			pause();
-			clearScreen();
-			choice = "";
-			continue;
-		}
-
-		switch (stoi(choice))
+		ch = choice();
+		switch (ch)
 		{
 		case 0:
 			return;
@@ -475,30 +476,39 @@ void start::mainMenu()
 	}
 }
 
-void start::addEmpMenu()
+int start::choice()
 {
 	string ch;
+	int res;
+	cin >> ch;
+	for (int i = 0; i < ch.length(); i++) {
+		if (ch[i] < 48 || ch[i] > 57)
+		{
+			ch = "";
+			return res = -1;
+		}
+	}
+	return res = stoi(ch);
+}
+
+void start::addEmpMenu()
+{
+	int ch;
 	while (1) {
 		clearScreen();
 		cout << "Выберити должность\n";
 		cout << "1. Садовод\n2. Смотритель\n3. Директор\n4. Менеджер\n5. Ветеринар\n0. Основное меню\n";
-		cin >> ch;
-		if (ch[0] < 48 || ch[0]>57) {
-			clearScreen();
-			cout << "Можно вводить только цифры!" << endl;
+		ch = choice();
+
+		if (ch > 5 || ch < 0) {
+			cout << "Неизвестная команда\n";
 			pause();
-			clearScreen();
-			ch = "";
 			continue;
-		}
-		if (stoi(ch) > 5) {
-			cout << "Неизвестная должность\n";
-			pause();
 		}
 		else
 			break;
 	}
-	if (stoi(ch) == 0)
+	if ((ch) == 0)
 		return;
 	string name;
 	int age;
@@ -514,7 +524,7 @@ void start::addEmpMenu()
 	cout << "Введите опыт сотрудника\n";
 	cin >> exp;
 	Employee*emp = nullptr;
-	switch (stoi(ch))
+	switch (ch)
 	{
 	case 1:
 		bool creativeSkills;
@@ -563,23 +573,16 @@ void start::addEmpMenu()
 }
 void start::removeEmpMenu()
 {
-	string ch;
+	int ch;
 	while (1) {
 		clearScreen();
 		cout << "Выберите ID работника для увольнения: (0 - вернуться назад)" << endl;
 		showShortOrgInfo();
-		cin >> ch;
-		if (ch[0] < 48 || ch[0]>57) {
-			clearScreen();
-			cout << "Можно вводить только цифры!" << endl;
-			pause();
-			clearScreen();
-			ch = "";
-			continue;
-		}
-		if (stoi(ch) == 0)
+		ch = choice();
+
+		if (ch == 0)
 			return;
-		if (!org.removeEmployeeById(stoi(ch))) {
+		if (!org.removeEmployeeById(ch)) {
 			cout << "Неверный ID!\n";
 			pause();
 			continue;
@@ -620,23 +623,16 @@ void start::setAnimalInfoMenu()
 		clearScreen();
 		cout << "Выбрать ID животного: \n";
 		showShortAnimalInfo();
-		cout << "0. Вернуться назад \n";
+		cout << "0  Вернуться  назад \n";
 
-		string ch;
-		cin >> ch;
-		if (ch[0] < 48 || ch[0]>57) {
-			clearScreen();
-			cout << "Можно вводить только цифры!" << endl;
-			pause();
-			clearScreen();
-			ch = "";
-			continue;
-		}
-		if (stoi(ch) == 0)
+		int ch;
+		ch = choice();
+
+		if (ch == 0)
 		{
 			return;
 		}
-		Animal *anim = z.getAnimalById(stoi(ch));
+		Animal *anim = z.getAnimalById(ch);
 
 		if (anim == nullptr)
 		{
@@ -669,7 +665,7 @@ void start::editAnimalMenu(Animal * animal)
 	while (1)
 	{
 		clearScreen();
-		//cout << string(typeid(*animal).name()).substr(6) << endl;
+
 		animal->getInfo();
 		cout << "1. Изменить информацию о животном\n";
 		cout << "2. Животное переезжает\n";
@@ -874,7 +870,7 @@ void start::setSalaryMenu()
 {
 	clearScreen();
 	cout << "Введите зарплату: \n";
-	string s;	
+	string s;
 	cin >> s;
 	for (size_t i = 0; i < s.length(); i++)
 	{
@@ -886,32 +882,25 @@ void start::setSalaryMenu()
 			s = "";
 			return;
 		}
-	}	
+	}
 	org.setBaseSalary(stoi(s));
 }
 void start::setEmpInfoMenu()
 {
-	string ch;
+	int ch;
 	while (1)
 	{
 		clearScreen();
 		cout << "Выберите ID работника: \n";
 		showShortOrgInfo();
-		cout << "0  Вернуться назад \n";
+		cout << "0  Вернуться  назад \n";
 
-		cin >> ch;
-		if (ch[0] < 48 || ch[0]>57) {
-			clearScreen();
-			cout << "Можно вводить только цифры!" << endl;
-			pause();
-			clearScreen();
-			ch = "";
-			continue;
-		}
-		if (stoi(ch) == 0)
+		ch = choice();
+
+		if (ch == 0)
 			break;
 
-		Employee *e = org.getEmpById(stoi(ch));
+		Employee *e = org.getEmpById(ch);
 
 		if (e == nullptr)
 		{
@@ -945,23 +934,16 @@ void start::editEmpMenu(Employee * emp)
 	while (1)
 	{
 		clearScreen();
-		//cout << string(typeid(*emp).name()).substr(6) << endl;
+
 		emp->info();
 		cout << "1. Изменить информацию о сотруднике\n";
 		cout << "2. Уволить сотрудника\n";
 		cout << "3. Поменять позицию сотрудника\n";
 		cout << "0. Назад\n";
-		string ch;
-		cin >> ch;
-		if (ch[0] < 48 || ch[0]>57) {
-			clearScreen();
-			cout << "Можно вводить только цифры!" << endl;
-			pause();
-			clearScreen();
-			ch = "";
-			continue;
-		}
-		switch (stoi(ch))
+		int ch;
+		ch = choice();
+
+		switch (ch)
 		{
 		case 0:
 			return;
@@ -978,7 +960,9 @@ void start::editEmpMenu(Employee * emp)
 			changePosition(emp);
 			return;
 		default:
-			cout << "Неизвестная команда";
+			cout << "Неизвестная команда\n";
+			pause();
+			clearScreen();
 			break;
 		}
 	}
@@ -1020,7 +1004,7 @@ void start::editEmpInfo(Employee * emp)
 		}
 		cout << "0. Вернуться назад\n";
 		int ch;
-		cin >> ch;
+		ch = choice();
 		if (ch < 0 || ch > index)
 		{
 			cout << "Неизвестная комманда!\n";
@@ -1145,24 +1129,17 @@ void start::changePosition(Employee * emp)
 		cout << "4. Менеджер\n";
 		cout << "5. Ветеринар\n";
 		cout << "0. Вернуться назад\n";
-		string ch;
-		cin >> ch;
-		if (ch[0] < 48 || ch[0]>57) {
-			clearScreen();
-			cout << "Можно вводить только цифры!" << endl;
-			pause();
-			clearScreen();
-			ch = "";
-			continue;
-		}
-		if (stoi(ch) < 0 || stoi(ch) >5)
+		int ch;
+		ch = choice();
+
+		if (ch < 0 || ch > 5)
 		{
 			cout << "Неизвестная команда\n";
 			pause();
 			continue;
 		}
 		Employee *e = nullptr;
-		switch (stoi(ch))
+		switch (ch)
 		{
 		case 1:
 			e = new Director(emp->getName(), emp->getAge(), emp->getSex(), emp->getWorkYears());
@@ -1181,7 +1158,7 @@ void start::changePosition(Employee * emp)
 			break;
 		case 5:
 			e = new Veterinarian(emp->getName(), emp->getAge(), emp->getSex(), emp->getWorkYears(), 0, 0, 0);
-			break;		
+			break;
 		}
 		org.addEmployee(e);
 		org.removeEmployeeById(emp->getId());

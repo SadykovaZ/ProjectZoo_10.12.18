@@ -326,7 +326,15 @@ void start::addAnimalMenu()
 	cout << "Введите цвет животного\n";
 	cin >> color;
 	cout << "Введите возраст животного\n";
-	cin >> age;
+	while (1) {
+		age = choice();
+		if (age < 0) {
+			cout << "Возраст введен неверно!\n";
+			continue;
+		}
+		else	break;
+
+	}
 
 	Animal*anim = nullptr;
 	switch (ch)
@@ -364,7 +372,16 @@ void start::addAnimalMenu()
 	{
 		int neckLength;
 		cout << "Введите длину шеи\n";
-		cin >> neckLength;
+		while (1) {
+			neckLength = choice();
+			if (neckLength < 0) {
+				cout << "Длина введенв неверно!\n";
+				continue;
+			}
+			else	break;
+
+		}
+
 		anim = new Giraffe(name, color, age, neckLength);
 		break;
 	}
@@ -372,7 +389,15 @@ void start::addAnimalMenu()
 	{
 		int bagSize;
 		cout << "Введите размер сумки\n";
-		cin >> bagSize;
+		while (1) {
+			bagSize = choice();
+			if (bagSize < 0) {
+				cout << "Длина введенв неверно!\n";
+				continue;
+			}
+			else	break;
+
+		}
 		anim = new Kangaroo(name, color, age, bagSize);
 		break;
 	}
@@ -518,11 +543,26 @@ void start::addEmpMenu()
 	cout << "Введите имя сотрудника\n";
 	cin >> name;
 	cout << "Введите возвраст сотрудника\n";
-	cin >> age;
+	while (1) {
+		age = choice();
+		if (age < 0) {
+			cout << "Возраст введен неверно!\n";
+			continue;
+		}
+		else	break;
+
+	}
 	cout << "Введите пол сотрудника\n";
 	cin >> sex;
 	cout << "Введите опыт сотрудника\n";
-	cin >> exp;
+	while (1) {
+		exp = choice();
+		if (exp < 0) {
+			cout << "Опыт введен неверно!\n";
+			continue;
+		}
+		else	break;
+	}
 	Employee*emp = nullptr;
 	switch (ch)
 	{
@@ -672,7 +712,7 @@ void start::editAnimalMenu(Animal * animal)
 		cout << "0. Назад\n";
 		int ch;
 		ch = choice();
-		
+
 		switch (ch)
 		{
 		case 0:
@@ -765,7 +805,7 @@ void start::editAnimalInfo(Animal * animal)
 		case 2:
 		{
 			string color;
-			cout << "\n Введите новый возраст: ";
+			cout << "\n Введите новый цвет: ";
 			cin >> color;
 			animal->setColor(color);
 			break;
@@ -773,9 +813,21 @@ void start::editAnimalInfo(Animal * animal)
 		case 3:
 		{
 			int age;
-			cout << "\n Введите новый возраст: ";
-			cin >> age;
-			animal->setAge(age);
+			cout << "\nВведите новый возраст: ";
+
+			while (1) {
+				age = choice();
+				if (age < 0) {
+					cout << "Возраст введен неверно!\n";
+					pause();
+					break;
+				}
+				else
+				{
+					animal->setAge(age);
+					break;
+				}
+			}
 			break;
 		}
 		default:
@@ -1020,9 +1072,21 @@ void start::editEmpInfo(Employee * emp)
 		case 2:
 		{
 			int age;
-			cout << "\nВведите возрас: ";
-			cin >> age;
-			emp->setAge(age);
+			cout << "\nВведите новый возраст: ";
+
+			while (1) {
+				age = choice();
+				if (age < 0) {
+					cout << "Возраст введен неверно!\n";
+					pause();
+					break;
+				}
+				else
+				{
+					emp->setAge(age);
+					break;
+				}
+			}
 			break;
 		}
 		case 3:
@@ -1037,8 +1101,19 @@ void start::editEmpInfo(Employee * emp)
 		{
 			int exp;
 			cout << "\nВведите опыт работы: ";
-			cin >> exp;
-			emp->setWorkYears(exp);
+			while (1) {
+				exp = choice();
+				if (exp < 0) {
+					cout << "Опыт введен неверно!\n";
+					pause();
+					break;
+				}
+				else
+				{
+					emp->setWorkYears(exp);
+					break;
+				}
+			}
 			break;
 		}
 		default:

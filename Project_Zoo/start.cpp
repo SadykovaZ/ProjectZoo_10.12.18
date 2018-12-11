@@ -660,8 +660,8 @@ void start::showShortAnimalInfo() const
 
 		cout << setw(3) << left << z[i].getId()
 
-			<< setw(10) << left << ani
-			<< setw(10) << left << z[i].getName() << endl;
+			<< setw(11) << left << ani
+			<< setw(11) << left << z[i].getName() << endl;
 	}
 }
 
@@ -670,11 +670,11 @@ void start::editAnimalMenu(Animal * animal)
 	while (1)
 	{
 		clearScreen();
-		cout << string(typeid(*animal).name()).substr(6) << endl;
+		//cout << string(typeid(*animal).name()).substr(6) << endl;
 		animal->getInfo();
 		cout << "1. Изменить информацию о животном\n";
 		cout << "2. Животное переезжает\n";
-		cout << "0. Back\n";
+		cout << "0. Назад\n";
 		int ch;
 		cin >> ch;
 		if (cin.fail()) {
@@ -927,8 +927,8 @@ void start::showShortOrgInfo() const
 		else if (emp == "Veterinarian") emp = "Ветеринар";
 
 		cout << setw(3) << left << org[i].getId()
-			<< setw(10) << left << emp
-			<< setw(10) << left << org[i].getName() << endl;
+			<< setw(11) << left << emp
+			<< setw(11) << left << org[i].getName() << endl;
 	}
 }
 void start::editEmpMenu(Employee * emp)
@@ -936,7 +936,7 @@ void start::editEmpMenu(Employee * emp)
 	while (1)
 	{
 		clearScreen();
-		cout << string(typeid(*emp).name()).substr(6) << endl;
+		//cout << string(typeid(*emp).name()).substr(6) << endl;
 		emp->info();
 		cout << "1. Изменить информацию о сотруднике\n";
 		cout << "2. Уволить сотрудника\n";
@@ -1120,10 +1120,17 @@ void start::editEmpInfo(Employee * emp)
 }
 void start::changePosition(Employee * emp)
 {
+	string str;
 	while (1)
 	{
 		clearScreen();
-		cout << "Выберите новую позицию для работника " << emp->getPosition() << " " << emp->getName() << endl;
+		str = emp->getPosition();
+		if (str == "Director") str = "директор";
+		else if (str == "Gardener") str = "садовник";
+		else if (str == "Keeper") str = "смотритель";
+		else if (str == "Manager") str = "менеджер";
+		else if (str == "Veterinarian") str = "ветеринар";
+		cout << "Выберите новую позицию для работника " << str << " " << emp->getName() << endl;
 		cout << "1. Директор\n";
 		cout << "2. Садовник\n";
 		cout << "3. Смотритель\n";

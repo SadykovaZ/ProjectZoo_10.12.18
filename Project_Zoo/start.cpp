@@ -214,10 +214,10 @@ void start::mainMenuOrg()
 }
 void start::mainMenuZoo()
 {
-	clearScreen();
+	
 	int choice = 0;
 	while (1) {
-		
+		clearScreen();
 		cout << "Имя зоопарка: " << z.getZooName();
 		cout << "\nГород: " << z.getCity();
 		cout << "\nКоличество животных: " << z.getCountOfAnimals();
@@ -272,10 +272,10 @@ void start::mainMenuZoo()
 }
 void start::addAnimalMenu()
 {
-	clearScreen();
+	
 	size_t ch;
 	while (1) {
-		
+		clearScreen();
 		cout << "Выберите животное\n";
 		cout << "1. Медведь\n2. Кошка\n3. Слон\n4. Жираф\n5. Кенгуру\n6. Обезьяна\n0. Выход в основное меню\n";
 		cin >> ch;
@@ -614,12 +614,14 @@ void start::setCityNameMenu()
 }
 void start::setAnimalInfoMenu()
 {
+	
 	while (1)
 	{
 		clearScreen();
+		cout << "Выбрать ID животного: \n";
 		showShortAnimalInfo();
-		cout << "0. Вернуться назад";
-		cout << "\nВыбрать ID животного: ";
+		cout << "0. Вернуться назад \n";
+		
 		int ch;
 		cin >> ch;
 		if (cin.fail()) {
@@ -631,7 +633,10 @@ void start::setAnimalInfoMenu()
 			clearScreen();
 			continue;
 		}
-		if (ch == 0) break;
+		if (ch == 0)
+		{
+			return;
+		}
 		Animal *anim = z.getAnimalById(ch);
 
 		if (anim == nullptr)
@@ -880,9 +885,10 @@ void start::setEmpInfoMenu()
 	while (1)
 	{
 		clearScreen();
+		cout << "Выберите ID работника: \n";
 		showShortOrgInfo();
-		cout << "0  Вернуться назад";
-		cout << "\nВыберите ID работника: ";		
+		cout << "0  Вернуться назад \n";
+				
 		cin >> ch;
 		if (cin.fail()) {
 			clearScreen();

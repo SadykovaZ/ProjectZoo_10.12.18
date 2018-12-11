@@ -136,30 +136,7 @@ void start::loadFromFile()
 		file.close();
 	}
 }
-void start::backUpFile() const
-{
-	ofstream fileOrg("backUp/org.txt");
 
-	fileOrg << org.getName() << ";"
-		<< to_string(org.getBaseSalary()) << "\n";
-	for (size_t i = 0; i < org.getCountOfEmployee(); i++)
-	{
-		fileOrg << org[i].getStringFileInfo();
-		if (i != org.getCountOfEmployee() - 1) fileOrg << endl;
-	}
-	fileOrg.close();
-
-	ofstream fileZoo("zoo.txt");
-	fileZoo << z.getZooName() << ";"
-		<< z.getCity() << "\n";
-
-	for (size_t i = 0; i < z.getCountOfAnimals(); i++)
-	{
-		fileZoo << z[i].getStringFileInfo();
-		if (i != z.getCountOfAnimals() - 1) fileZoo << endl;
-	}
-	fileZoo.close();
-}
 void start::startMenu()
 {
 	clearScreen();
@@ -447,8 +424,7 @@ void start::mainMenu()
 		cout << "3. Изменить название организации\n";
 		cout << "4. Изменить название Зоопарка\n";
 		cout << "5. Изменить зарплату\n";
-		cout << "6. Изменить город\n";
-		cout << "7. Сделать BackUp\n";
+		cout << "6. Изменить город\n";		
 		cout << "0. Сохранить и выйти\n";
 		int choice;
 		cin >> choice;
@@ -489,11 +465,7 @@ void start::mainMenu()
 		case 6:
 			this->setCityNameMenu();
 			clearScreen();
-			break;
-		case 7:
-			backUpFile();
-			clearScreen();
-			break;
+			break;		
 		default:			
 				cout << "Неизвестная команда\n";
 				pause();

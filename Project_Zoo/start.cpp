@@ -215,7 +215,7 @@ void start::mainMenuOrg()
 			break;
 
 		default:
-			cout << "Неизвестная команда\nНажмити любую клавишу для продолжения\n";
+			cout << "Неизвестная команда\n";
 			pause();
 			clearScreen();
 			break;
@@ -285,7 +285,7 @@ void start::mainMenuZoo()
 				setAnimalInfoMenu();
 			break;
 		default:
-			cout << "Неправильная команда\nнажмите любую кнопку чтобы продолжить\n";
+			cout << "Неправильная команда\n";
 
 			pause();
 			clearScreen();
@@ -670,17 +670,10 @@ void start::editAnimalMenu(Animal * animal)
 		cout << "1. Изменить информацию о животном\n";
 		cout << "2. Животное переезжает\n";
 		cout << "0. Назад\n";
-		string ch;
-		cin >> ch;
-		if (ch[0] < 48 || ch[0]>57) {
-			clearScreen();
-			cout << "Можно вводить только цифры!" << endl;
-			pause();
-			clearScreen();
-			ch = "";
-			continue;
-		}
-		switch (stoi(ch))
+		int ch;
+		ch = choice();
+		
+		switch (ch)
 		{
 		case 0:
 			return;
@@ -694,7 +687,8 @@ void start::editAnimalMenu(Animal * animal)
 			return;
 			break;
 		default:
-			cout << "Неизвестная команда";
+			cout << "Неизвестная команда\n";
+			pause();
 			break;
 		}
 	}
@@ -749,7 +743,7 @@ void start::editAnimalInfo(Animal * animal)
 
 		cout << "0. Вернуться назад\n";
 		int ch;
-		cin >> ch;
+		ch = choice();
 		if (ch < 0 || ch > index)
 		{
 			cout << "Неизвестная команда!\n";

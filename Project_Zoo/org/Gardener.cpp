@@ -14,7 +14,7 @@ void Gardener::setCreativeSkills(bool creativeSkills)
 void Gardener::info() const
 {
 	Employee::info();
-	cout << "Творческие навыки: " << boolalpha << creativeSkills << endl;
+	cout << "Творческие навыки: " << boolalpha << boolChange(getCreativeSkills()) << endl;
 }
 
 double Gardener::getSalary() const
@@ -38,4 +38,13 @@ void Gardener::readStringInfo(string & res)
 {
 	Employee::readStringInfo(res);
 	creativeSkills = res[res.size() - 2];
+}
+
+string Gardener::boolChange(bool a) const
+{
+	string res;
+	if (a == 1)
+		return res = "Да";
+	else
+		return res = "Нет";
 }

@@ -21,8 +21,8 @@ void Manager::setHasEdu(bool hasEdu)
 void Manager::info() const
 {
 	Employee::info();
-	cout << "Коммуникативные навыки: " << boolalpha << communicationSkills << endl;
-	cout << "Высшее образование: " << boolalpha << hasEdu << endl;
+	cout << "Коммуникативные навыки: " << boolalpha << boolChange(getCommunicationSkills()) << endl;
+	cout << "Высшее образование: " << boolalpha << boolChange(getHasEdu()) << endl;
 }
 
 double Manager::getSalary() const
@@ -49,4 +49,13 @@ void Manager::readStringInfo(string & res)
 	Employee::readStringInfo(res);
 	communicationSkills = res[res.size() - 2];
 	hasEdu = res[res.size() - 2];
+}
+
+string Manager::boolChange(bool a) const
+{
+	string res;
+	if (a == 1)
+		return res = "Да";
+	else
+		return res = "Нет";
 }

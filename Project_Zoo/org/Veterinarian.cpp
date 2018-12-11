@@ -27,9 +27,9 @@ void Veterinarian::setOphthalmologySkill(bool ophthalmologySkill)
 void Veterinarian::info() const
 {
 	Employee::info();
-	cout << "Навыки анастезии: " << boolalpha << anesthesiologySkill << endl;
-	cout << "Навыки хирургиии: " << boolalpha << surgerySkill << endl;
-	cout << "Навыки офтальмологии: " << boolalpha << ophthalmologySkill << endl;
+	cout << "Навыки анастезии: " << boolalpha <<boolChange(getAnesthesiologySkill()) << endl;
+	cout << "Навыки хирургиии: " << boolalpha << boolChange(getSurgerySkill()) << endl;
+	cout << "Навыки офтальмологии: " << boolalpha << boolChange(getOphthalmologySkill()) << endl;
 }
 
 double Veterinarian::getSalary() const
@@ -61,4 +61,13 @@ void Veterinarian::readStringInfo(string & res)
 	surgerySkill = res[res.size() - 2];
 	ophthalmologySkill = res[res.size() - 2];
 
+}
+
+string Veterinarian::boolChange(bool  a) const
+{
+	string res;
+	if (a == 1)
+		return res = "Да";
+	else
+		return res = "Нет";
 }

@@ -19,6 +19,7 @@ public:
 
 	string getStringFileInfo()const override;
 	void readStringInfo(string &res)override;
+	string boolChange(bool a) const;
 	
 };
 

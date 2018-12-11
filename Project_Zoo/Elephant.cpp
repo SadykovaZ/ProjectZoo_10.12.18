@@ -17,7 +17,7 @@ void Elephant::getInfo() const
 {
 	Animal::getInfo();
 	cout << "\nДлина хобота: " << trunkLength;
-	cout << "\nНаличие бивней: " << hasTusk << endl;
+	cout << "\nНаличие бивней: " << boolChange(getHasTusk()) << endl;
 	cout << "-------------------------------------\n";
 
 	
@@ -42,4 +42,13 @@ void Elephant::readStringInfo(string & res)
 	Animal::readStringInfo(res);
 	trunkLength = stoi(res.substr(0, res.find(';')));
 	hasTusk = res[res.size() - 2];
+}
+
+string Elephant::boolChange(bool a) const
+{
+	string res;
+	if (a == 1)
+		return res = "Да";
+	else
+		return res = "Нет";
 }

@@ -15,7 +15,7 @@ void Keeper::info() const
 {
 	Employee::info();
 
-	cout << "Внимательность: " << boolalpha << attentiveness << endl;
+	cout << "Внимательность: " << boolalpha << boolChange(getAttentiveness()) << endl;
 }
 
 double Keeper::getSalary() const
@@ -39,4 +39,13 @@ void Keeper::readStringInfo(string & res)
 {
 	Employee::readStringInfo(res);
 	attentiveness = res[res.size() - 2];
+}
+
+string Keeper::boolChange(bool a) const
+{
+	string res;
+	if (a == 1)
+		return res = "Да";
+	else
+		return res = "Нет";
 }

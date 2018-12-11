@@ -136,6 +136,30 @@ void start::loadFromFile()
 		file.close();
 	}
 }
+void start::backUpFile() const
+{
+	ofstream fileOrg("backUp/org.txt");
+
+	fileOrg << org.getName() << ";"
+		<< to_string(org.getBaseSalary()) << "\n";
+	for (size_t i = 0; i < org.getCountOfEmployee(); i++)
+	{
+		fileOrg << org[i].getStringFileInfo();
+		if (i != org.getCountOfEmployee() - 1) fileOrg << endl;
+	}
+	fileOrg.close();
+
+	ofstream fileZoo("zoo.txt");
+	fileZoo << z.getZooName() << ";"
+		<< z.getCity() << "\n";
+
+	for (size_t i = 0; i < z.getCountOfAnimals(); i++)
+	{
+		fileZoo << z[i].getStringFileInfo();
+		if (i != z.getCountOfAnimals() - 1) fileZoo << endl;
+	}
+	fileZoo.close();
+}
 void start::startMenu()
 {
 	clearScreen();
@@ -167,7 +191,7 @@ void start::mainMenuOrg()
 		1. Добавить нового сотрудника\n\
 		2. Удалить сотрудника\n\
 		3. Информация по организации\n\
-                4. Информация по сотрудникам\n\
+        \t4. Информация по сотрудникам\n\
 		0. Выход на начальный экран выбора\n"
 			;
 		cin >> choice;
@@ -225,7 +249,7 @@ void start::mainMenuZoo()
 		1. Добавить новое животное\n\
 		2. Животное переехало\n\
 		3. Показать информацию о животных\n\
-                4. Изменить информацию о животных\n\
+        \t4. Изменить информацию о животных\n\
 		0. Выход на начальный экран выбора\n"
 			;
 		cin >> choice;
@@ -372,12 +396,24 @@ void start::addAnimalMenu()
 }
 void start::removeAnimalMenu()
 {
+	int ch;
 	while (1) {
 		clearScreen();
-		cout << "Выберите ID животного для переезда" << endl;
+		cout << "Выберите ID животного для переезда (0 - вернуться назад)" << endl;
 		showShortAnimalInfo();
-		int ch;
+		
 		cin >> ch;
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			continue;
+		}
+		if (ch == 0)
+			return;
 		if (!z.removeAnimalById(ch)) {
 			cout << "Неверный ID!\n";
 			pause();
@@ -406,13 +442,14 @@ void start::mainMenu()
 		cout << "\nГород: " << z.getCity();
 		cout << "\n\n-------------------------------------------------\n\n";
 
-		cout << "1 - Информация о сотрудниках\n";
-		cout << "2 - Информация о животных\n";
-		cout << "3 - Изменить название организации\n";
-		cout << "4 - Изменить название Зоопарка\n";
-		cout << "5 - Изменить зарплату\n";
-		cout << "6 - Изменить город\n";
-		cout << "0 - Сохранить и выйти\n";
+		cout << "1. Информация о сотрудниках\n";
+		cout << "2. Информация о животных\n";
+		cout << "3. Изменить название организации\n";
+		cout << "4. Изменить название Зоопарка\n";
+		cout << "5. Изменить зарплату\n";
+		cout << "6. Изменить город\n";
+		cout << "7. Сделать BackUp\n";
+		cout << "0. Сохранить и выйти\n";
 		int choice;
 		cin >> choice;
 		
@@ -451,6 +488,10 @@ void start::mainMenu()
 			break;
 		case 6:
 			this->setCityNameMenu();
+			clearScreen();
+			break;
+		case 7:
+			backUpFile();
 			clearScreen();
 			break;
 		default:			
@@ -551,12 +592,23 @@ void start::addEmpMenu()
 }
 void start::removeEmpMenu()
 {
+	int ch;
 	while (1) {
 		clearScreen();
-		cout << "Выберите ID работника для увольнения:" << endl;
-		showShortOrgInfo();
-		int ch;
+		cout << "Выберите ID работника для увольнения: (0 - вернуться назад)" << endl;
+		showShortOrgInfo();		
 		cin >> ch;
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			continue;
+		}
+		if (ch == 0)
+			return;
 		if (!org.removeEmployeeById(ch)) {
 			cout << "Неверный ID!\n";
 			pause();
@@ -594,10 +646,19 @@ void start::setAnimalInfoMenu()
 	{
 		clearScreen();
 		showShortAnimalInfo();
-		cout << "0- Вернуться назад";
+		cout << "0. Вернуться назад";
 		cout << "\nВыбрать ID животного: ";
 		int ch;
 		cin >> ch;
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			continue;
+		}
 		if (ch == 0) break;
 		Animal *anim = z.getAnimalById(ch);
 
@@ -639,6 +700,15 @@ void start::editAnimalMenu(Animal * animal)
 		cout << "0. Back\n";
 		int ch;
 		cin >> ch;
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			continue;
+		}
 		switch (ch)
 		{
 		case 0:
@@ -834,15 +904,26 @@ void start::setSalaryMenu()
 }
 void start::setEmpInfoMenu()
 {
+	int ch;
 	while (1)
 	{
 		clearScreen();
 		showShortOrgInfo();
-		cout << "0- Вернуться назад";
-		cout << "\nВыберите ID работника: ";
-		int ch;
+		cout << "0  Вернуться назад";
+		cout << "\nВыберите ID работника: ";		
 		cin >> ch;
-		if (ch == 0) break;
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			continue;
+		}
+		if (ch == 0) 
+			break;
+
 		Employee *e = org.getEmpById(ch);
 
 		if (e == nullptr)
@@ -853,6 +934,7 @@ void start::setEmpInfoMenu()
 		}
 		editEmpMenu(e);
 	}
+	
 }
 void start::showShortOrgInfo() const
 {
@@ -884,6 +966,15 @@ void start::editEmpMenu(Employee * emp)
 		cout << "0. Назад\n";
 		int ch;
 		cin >> ch;
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			continue;
+		}
 		switch (ch)
 		{
 		case 0:
@@ -1063,6 +1154,15 @@ void start::changePosition(Employee * emp)
 		cout << "0. Вернуться назад\n";
 		int ch;
 		cin >> ch;
+		if (cin.fail()) {
+			clearScreen();
+			cin.clear();
+			cin.ignore();
+			cout << "Можно вводить только цифры!" << endl;
+			pause();
+			clearScreen();
+			continue;
+		}
 		if (ch < 0 || ch>5)
 		{
 			cout << "Неизвестная команда\n";

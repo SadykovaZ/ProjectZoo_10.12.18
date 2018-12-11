@@ -35,6 +35,7 @@ public:
 	~start();
 	void saveToFile()const;
 	void loadFromFile();
+	void backUpFile()const;
 private:
 	void startMenu();
 	void mainMenu();
